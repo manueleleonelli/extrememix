@@ -1,29 +1,29 @@
 #' Generalized Pareto Distribution
 #' @export
-dgpd <- function(x, xi, sigma, mu, log = FALSE){
-  if(log == FALSE){return(c_dgpd(x, xi, sigma, mu))} 
-  else(return(log(c_dgpd(x,xi,sigma,mu))))
+dgpd <- function(x, xi, sigma, u, log = FALSE){
+  if(log == FALSE){return(c_dgpd(x, xi, sigma, u))} 
+  else(return(log(c_dgpd(x,xi,sigma,u))))
 }
 
 #' Generalized Pareto Distribution
 #' @export
-pgpd <- function(q, xi, sigma, mu, lower.tail = TRUE){
-  if(lower.tail == TRUE){return(c_pgpd(q, xi, sigma, mu))} 
-  else(return(1-c_pgpd(q,xi,sigma,mu)))
+pgpd <- function(q, xi, sigma, u, lower.tail = TRUE){
+  if(lower.tail == TRUE){return(c_pgpd(q, xi, sigma, u))} 
+  else(return(1-c_pgpd(q,xi,sigma,u)))
 }
 
 
 #' Generalized Pareto Distribution
 #' @export
-qgpd <- function(q, xi, sigma, mu, lower.tail = TRUE){
+qgpd <- function(q, xi, sigma, u, lower.tail = TRUE){
   if(lower.tail == TRUE){ q <- 1-q}
-  return(c_qgpd(q, xi, sigma, mu))
+  return(c_qgpd(q, xi, sigma, u))
 }
 
 #' Generalized Pareto Distribution
 #' @export
-rgpd <- function(N, xi, sigma, mu){
-  c_rgpd(N,xi,sigma,mu)
+rgpd <- function(N, xi, sigma, u){
+  c_rgpd(xi,sigma,u)
 }
 
 #' Generalized Pareto Distribution
@@ -68,3 +68,22 @@ qmgamma <- function(p,mu,eta,w){
   c_qmgamma(p,mu,eta,w)
 }
 
+
+#' Generalized Pareto Distribution
+#' @export
+rmgamma <- function(mu,eta,w){
+  c_rmgamma(mu,eta,w);
+}
+
+
+#' Generalized Pareto Distribution
+#' @export
+dmgpd <- function(x,xi,sigma,u,mu,eta,w){
+  c_dmgpd(x,xi,sigma,u,mu,eta,w);
+}
+
+#' Generalized Pareto Distribution
+#' @export
+pmgpd <- function(q,xi,sigma,u,mu,eta,w){
+  c_pmgpd(q,xi,sigma,u,mu,eta,w);
+}

@@ -45,3 +45,15 @@ c_qmgamma <- function(p, mu, eta, w) {
     .Call('_extrememix_c_qmgamma', PACKAGE = 'extrememix', p, mu, eta, w)
 }
 
+c_rmgamma <- function(mu, eta, w) {
+    .Call('_extrememix_c_rmgamma', PACKAGE = 'extrememix', mu, eta, w)
+}
+
+c_dmgpd <- function(x, xi, sigma, u, mu, eta, w) {
+    .Call('_extrememix_c_dmgpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta, w)
+}
+
+c_pmgpd <- function(q, xi, sigma, u, mu, eta, w) {
+    .Call('_extrememix_c_pmgpd', PACKAGE = 'extrememix', q, xi, sigma, u, mu, eta, w)
+}
+

@@ -4,7 +4,7 @@
 \alias{qgpd}
 \title{Generalized Pareto Distribution}
 \usage{
-qgpd(q, xi, sigma, mu, lower.tail = TRUE)
+qgpd(q, xi, sigma, u, lower.tail = TRUE)
 }
 \description{
 Generalized Pareto Distribution

@@ -4,7 +4,7 @@
 \alias{dgpd}
 \title{Generalized Pareto Distribution}
 \usage{
-dgpd(x, xi, sigma, mu, log = FALSE)
+dgpd(x, xi, sigma, u, log = FALSE)
 }
 \description{
 Generalized Pareto Distribution

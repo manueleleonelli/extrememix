@@ -95,3 +95,42 @@ double c_qmgamma(double p, NumericVector mu, NumericVector eta, NumericVector w)
   } while (N <= 100000);
   stop("error");
 }
+
+
+// [[Rcpp::export]]
+double c_rmgamma(NumericVector mu, NumericVector eta, NumericVector w){
+  NumericVector cw = cumsum(w);
+  int n = mu.length();
+  int index = 0;
+  double u = R::runif(0,1);
+  if(u <= cw[0]){ index = 0;}
+  for(int i = 0; i < (n-1); i++ ){
+    if(u > cw[i] & u <= cw[i+1]){
+      index = i+1;
+      }
+    }
+  return(c_rgamma(mu[index],eta[index]));
+}
+
+
+// [[Rcpp::export]]
+NumericVector c_dmgpd(NumericVector x, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w){
+  int n = x.length();
+  NumericVector out(n);
+  for(int i =0; i <n; i++){
+    if(x[i] <= u){out[i] = c_dmgamma(x[i],mu,eta,w);}
+    else{out[i] = (1-c_pmgamma(u,mu,eta,w))*c_dgpd(x[i],xi,sigma,u);}
+    }
+  return(out);
+}
+
+// [[Rcpp::export]]
+NumericVector c_pmgpd(NumericVector q, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w){
+  int n = q.length();
+  NumericVector out(n);
+  for(int i =0; i <n; i++){
+    if(q[i] <= u){out[i] = c_pmgamma(q[i],mu,eta,w);}
+    else{out[i] = c_pmgamma(u,mu,eta,w) + (1-c_pmgamma(u,mu,eta,w))*c_dgpd(q[i],xi,sigma,u);}
+  }
+  return(out);
+}
