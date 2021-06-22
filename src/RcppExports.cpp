@@ -205,6 +205,40 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_qmgpd
+NumericVector c_qmgpd(NumericVector p, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w);
+RcppExport SEXP _extrememix_c_qmgpd(SEXP pSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP, SEXP wSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type eta(etaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type w(wSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_qmgpd(p, xi, sigma, u, mu, eta, w));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_rmgpd
+NumericVector c_rmgpd(int N, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w);
+RcppExport SEXP _extrememix_c_rmgpd(SEXP NSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP, SEXP wSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type eta(etaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type w(wSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_rmgpd(N, xi, sigma, u, mu, eta, w));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_extrememix_c_dgpd", (DL_FUNC) &_extrememix_c_dgpd, 4},
@@ -221,6 +255,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_extrememix_c_rmgamma", (DL_FUNC) &_extrememix_c_rmgamma, 3},
     {"_extrememix_c_dmgpd", (DL_FUNC) &_extrememix_c_dmgpd, 7},
     {"_extrememix_c_pmgpd", (DL_FUNC) &_extrememix_c_pmgpd, 7},
+    {"_extrememix_c_qmgpd", (DL_FUNC) &_extrememix_c_qmgpd, 7},
+    {"_extrememix_c_rmgpd", (DL_FUNC) &_extrememix_c_rmgpd, 7},
     {NULL, NULL, 0}
 };
 

@@ -130,7 +130,29 @@ NumericVector c_pmgpd(NumericVector q, double xi, double sigma, double u, Numeri
   NumericVector out(n);
   for(int i =0; i <n; i++){
     if(q[i] <= u){out[i] = c_pmgamma(q[i],mu,eta,w);}
-    else{out[i] = c_pmgamma(u,mu,eta,w) + (1-c_pmgamma(u,mu,eta,w))*c_dgpd(q[i],xi,sigma,u);}
+    else{out[i] = c_pmgamma(u,mu,eta,w) + (1-c_pmgamma(u,mu,eta,w))*c_pgpd(q[i],xi,sigma,u);}
   }
+  return(out);
+}
+
+// [[Rcpp::export]]
+NumericVector c_qmgpd(NumericVector p, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w){
+  int n = p.length();
+  NumericVector out(n);
+  double thresh = c_pmgamma(u,mu,eta,w);
+  for(int i =0; i <n; i++){
+    if(p[i] <= thresh){out[i] = c_qmgamma(p[i],mu,eta,w);}
+    else{out[i] = u + (sigma/xi)*(pow(1-(p[i]-c_pmgamma(u,mu,eta,w))/(1-c_pmgamma(u,mu,eta,w)),-xi)-1);}
+  }
+  return(out);
+}
+
+// [[Rcpp::export]]
+NumericVector c_rmgpd(int N, double xi, double sigma, double u, NumericVector mu, NumericVector eta, NumericVector w){
+  NumericVector out(N);
+  for (int i = 0; i < N; i++){
+    out[i] = c_rmgamma(mu,eta,w);
+    if (out[i] > u) {out[i] = c_rgpd(xi,sigma,u);}
+    }
   return(out);
 }

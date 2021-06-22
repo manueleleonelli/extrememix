@@ -87,3 +87,15 @@ dmgpd <- function(x,xi,sigma,u,mu,eta,w){
 pmgpd <- function(q,xi,sigma,u,mu,eta,w){
   c_pmgpd(q,xi,sigma,u,mu,eta,w);
 }
+
+#' Generalized Pareto Distribution
+#' @export
+qmgpd <- function(p,xi,sigma,u,mu,eta,w){
+  c_qmgpd(p,xi,sigma,u,mu,eta,w);
+}
+
+#' Generalized Pareto Distribution
+#' @export
+rmgpd <- function(N,xi,sigma,u,mu,eta,w){
+  c_rmgpd(N,xi,sigma,u,mu,eta,w);
+}

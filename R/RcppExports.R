@@ -57,3 +57,11 @@ c_pmgpd <- function(q, xi, sigma, u, mu, eta, w) {
     .Call('_extrememix_c_pmgpd', PACKAGE = 'extrememix', q, xi, sigma, u, mu, eta, w)
 }
 
+c_qmgpd <- function(p, xi, sigma, u, mu, eta, w) {
+    .Call('_extrememix_c_qmgpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta, w)
+}
+
+c_rmgpd <- function(N, xi, sigma, u, mu, eta, w) {
+    .Call('_extrememix_c_rmgpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta, w)
+}
+
