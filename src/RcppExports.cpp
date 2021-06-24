@@ -239,6 +239,106 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// c_fmgpd
+List c_fmgpd(NumericVector x, int it, int k, NumericVector start_gpd, NumericVector start_mu, NumericVector start_eta, NumericVector start_w, NumericVector var, NumericVector prior_u, NumericVector prior_mu, NumericVector prior_eta);
+RcppExport SEXP _extrememix_c_fmgpd(SEXP xSEXP, SEXP itSEXP, SEXP kSEXP, SEXP start_gpdSEXP, SEXP start_muSEXP, SEXP start_etaSEXP, SEXP start_wSEXP, SEXP varSEXP, SEXP prior_uSEXP, SEXP prior_muSEXP, SEXP prior_etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type it(itSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type start_gpd(start_gpdSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type start_mu(start_muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type start_eta(start_etaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type start_w(start_wSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type var(varSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type prior_u(prior_uSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type prior_mu(prior_muSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type prior_eta(prior_etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_fmgpd(x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_dggpd
+NumericVector c_dggpd(NumericVector x, double xi, double sigma, double u, double mu, double eta);
+RcppExport SEXP _extrememix_c_dggpd(SEXP xSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_dggpd(x, xi, sigma, u, mu, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_pggpd
+NumericVector c_pggpd(NumericVector x, double xi, double sigma, double u, double mu, double eta);
+RcppExport SEXP _extrememix_c_pggpd(SEXP xSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_pggpd(x, xi, sigma, u, mu, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_rggpd
+NumericVector c_rggpd(double N, double xi, double sigma, double u, double mu, double eta);
+RcppExport SEXP _extrememix_c_rggpd(SEXP NSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type N(NSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_rggpd(N, xi, sigma, u, mu, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_qggpd
+NumericVector c_qggpd(NumericVector p, double xi, double sigma, double u, double mu, double eta);
+RcppExport SEXP _extrememix_c_qggpd(SEXP pSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP, SEXP muSEXP, SEXP etaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
+    Rcpp::traits::input_parameter< double >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< double >::type u(uSEXP);
+    Rcpp::traits::input_parameter< double >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< double >::type eta(etaSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_qggpd(p, xi, sigma, u, mu, eta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// c_fggpd
+List c_fggpd(NumericVector x, int it, NumericVector start, NumericVector var, NumericVector prior);
+RcppExport SEXP _extrememix_c_fggpd(SEXP xSEXP, SEXP itSEXP, SEXP startSEXP, SEXP varSEXP, SEXP priorSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type it(itSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type start(startSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type var(varSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type prior(priorSEXP);
+    rcpp_result_gen = Rcpp::wrap(c_fggpd(x, it, start, var, prior));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_extrememix_c_dgpd", (DL_FUNC) &_extrememix_c_dgpd, 4},
@@ -257,6 +357,12 @@ static const R_CallMethodDef CallEntries[] = {
     {"_extrememix_c_pmgpd", (DL_FUNC) &_extrememix_c_pmgpd, 7},
     {"_extrememix_c_qmgpd", (DL_FUNC) &_extrememix_c_qmgpd, 7},
     {"_extrememix_c_rmgpd", (DL_FUNC) &_extrememix_c_rmgpd, 7},
+    {"_extrememix_c_fmgpd", (DL_FUNC) &_extrememix_c_fmgpd, 11},
+    {"_extrememix_c_dggpd", (DL_FUNC) &_extrememix_c_dggpd, 6},
+    {"_extrememix_c_pggpd", (DL_FUNC) &_extrememix_c_pggpd, 6},
+    {"_extrememix_c_rggpd", (DL_FUNC) &_extrememix_c_rggpd, 6},
+    {"_extrememix_c_qggpd", (DL_FUNC) &_extrememix_c_qggpd, 6},
+    {"_extrememix_c_fggpd", (DL_FUNC) &_extrememix_c_fggpd, 5},
     {NULL, NULL, 0}
 };
 

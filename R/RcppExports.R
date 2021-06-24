@@ -65,3 +65,27 @@ c_rmgpd <- function(N, xi, sigma, u, mu, eta, w) {
     .Call('_extrememix_c_rmgpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta, w)
 }
 
+c_fmgpd <- function(x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta) {
+    .Call('_extrememix_c_fmgpd', PACKAGE = 'extrememix', x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta)
+}
+
+c_dggpd <- function(x, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_dggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+}
+
+c_pggpd <- function(x, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_pggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+}
+
+c_rggpd <- function(N, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_rggpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta)
+}
+
+c_qggpd <- function(p, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_qggpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta)
+}
+
+c_fggpd <- function(x, it, start, var, prior) {
+    .Call('_extrememix_c_fggpd', PACKAGE = 'extrememix', x, it, start, var, prior)
+}
+
