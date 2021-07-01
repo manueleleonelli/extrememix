@@ -113,3 +113,19 @@ c_tvar_ggpd <- function(chain, x) {
     .Call('_extrememix_c_tvar_ggpd', PACKAGE = 'extrememix', chain, x)
 }
 
+c_pred_mgpd <- function(x, xi, sigma, u, mu, eta, w) {
+    .Call('_extrememix_c_pred_mgpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta, w)
+}
+
+c_quant_mgpd <- function(gpd, mu, eta, w, x) {
+    .Call('_extrememix_c_quant_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+}
+
+c_es_mgpd <- function(gpd, mu, eta, w, x) {
+    .Call('_extrememix_c_es_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+}
+
+c_tvar_mgpd <- function(gpd, mu, eta, w, x) {
+    .Call('_extrememix_c_tvar_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+}
+

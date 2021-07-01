@@ -29,5 +29,5 @@ BIC.ggpd <- function(x,...){
 #'
 BIC.mgpd <- function(x,...){
   params <- apply(x$chain,2, mean)
-  -2*logLik(x) +ncol(x$chain)*log(length(x$data))
+  -2*logLik(x) +(ncol(x$chain)-1)*log(length(x$data))
 }

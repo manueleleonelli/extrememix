@@ -79,6 +79,6 @@ fggpd <- function(x, it,start = NULL, var = NULL,  prior = NULL, thin = 1, burn 
   mh <- c_fggpd(x,it,start,var,prior)
   mh$chain <- mh$chain[seq(burn+1,nrow(mh$chain),by = thin),]
   mh$data <- x
-  class(mh) <- "ggpd"
+  class(mh) <- c("ggpd","evmm")
   return(mh)
 }
