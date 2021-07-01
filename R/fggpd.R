@@ -1,8 +1,8 @@
 #' @importFrom stats var
 ggpd.starting.values <- function(x){
-  lower <- subset(x, x <= quantile(x,0.9))
-  pargpd <- unname(fpot(x,quantile(x,0.9),std.err = F)$estimate)
-  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(quantile(x,0.9)), startmu = mean(lower), starteta = mean(lower)^2/var(lower)))
+  lower <- subset(x, x <= stats::quantile(x,0.9))
+  pargpd <- unname(fpot(x,stats::quantile(x,0.9),std.err = F)$estimate)
+  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(stats::quantile(x,0.9)), startmu = mean(lower), starteta = mean(lower)^2/var(lower)))
 }
 
 
@@ -18,7 +18,7 @@ ggpd.compute.var <- function(x,start){
 
 ggpd.compute.prior <- function(x,start){
   prior.eta <- list(c = start$starteta, d = 0.001)
-  prior.u <- list(mean = start$startu, sd = uniroot(function(r) qnorm(0.025,start$startu,r) - quantile(x,0.5), c(0,max(x)))$root)
+  prior.u <- list(mean = start$startu, sd = uniroot(function(r) qnorm(0.025,start$startu,r) - stats::quantile(x,0.5), c(0,max(x)))$root)
   prior.mu <- list(a = start$startmu, b = 0.001)
   return(list(u = prior.u, mu = prior.mu, eta = prior.eta))
 }

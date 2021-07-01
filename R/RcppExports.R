@@ -49,6 +49,22 @@ c_rmgamma <- function(mu, eta, w) {
     .Call('_extrememix_c_rmgamma', PACKAGE = 'extrememix', mu, eta, w)
 }
 
+c_dggpd <- function(x, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_dggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+}
+
+c_pggpd <- function(x, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_pggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+}
+
+c_rggpd <- function(N, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_rggpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta)
+}
+
+c_qggpd <- function(p, xi, sigma, u, mu, eta) {
+    .Call('_extrememix_c_qggpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta)
+}
+
 c_dmgpd <- function(x, xi, sigma, u, mu, eta, w) {
     .Call('_extrememix_c_dmgpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta, w)
 }
@@ -69,23 +85,31 @@ c_fmgpd <- function(x, it, k, start_gpd, start_mu, start_eta, start_w, var, prio
     .Call('_extrememix_c_fmgpd', PACKAGE = 'extrememix', x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta)
 }
 
-c_dggpd <- function(x, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_dggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
-}
-
-c_pggpd <- function(x, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_pggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
-}
-
-c_rggpd <- function(N, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_rggpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta)
-}
-
-c_qggpd <- function(p, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_qggpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta)
-}
-
 c_fggpd <- function(x, it, start, var, prior) {
     .Call('_extrememix_c_fggpd', PACKAGE = 'extrememix', x, it, start, var, prior)
+}
+
+DIC_ggpd <- function(chain, data) {
+    .Call('_extrememix_DIC_ggpd', PACKAGE = 'extrememix', chain, data)
+}
+
+WAIC_ggpd <- function(chain, data) {
+    .Call('_extrememix_WAIC_ggpd', PACKAGE = 'extrememix', chain, data)
+}
+
+c_pred_ggpd <- function(x, chain) {
+    .Call('_extrememix_c_pred_ggpd', PACKAGE = 'extrememix', x, chain)
+}
+
+c_quant_ggpd <- function(chain, x) {
+    .Call('_extrememix_c_quant_ggpd', PACKAGE = 'extrememix', chain, x)
+}
+
+c_es_ggpd <- function(chain, x) {
+    .Call('_extrememix_c_es_ggpd', PACKAGE = 'extrememix', chain, x)
+}
+
+c_tvar_ggpd <- function(chain, x) {
+    .Call('_extrememix_c_tvar_ggpd', PACKAGE = 'extrememix', chain, x)
 }
 

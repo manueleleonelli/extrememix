@@ -26,5 +26,5 @@ AICc.ggpd <- function(x,...){
 #' @rdname AICc
 #'
 AICc.mgpd <- function(x,...){
- AIC(x) + (2*ncol(x$chain)^2 + 2*ncol(x$chain))/(length(x$data)- ncol(x$chain)-1)
+ AIC(x) + (2*(ncol(x$chain)-1)^2 + 2*(ncol(x$chain)-1))/(length(x$data)- (ncol(x$chain)-1)-1)
 }

@@ -55,7 +55,7 @@ pmgpd <- function(q,xi,sigma,u,mu,eta,w, lower.tail = TRUE){
   if(u <= 0) stop("u must be positive")
   if(q< 0 || q>1){stop("q must be between zero and one")}
   if(lower.tail == TRUE){c_pmgpd(q,xi,sigma,u,mu,eta,w)}
-  else{c_pmgpd(1-q,xi,sigma,u,mu,eta,w)}
+  else{1-c_pmgpd(q,xi,sigma,u,mu,eta,w)}
 }
 
 #' @rdname mgpd

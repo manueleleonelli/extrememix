@@ -29,5 +29,5 @@ AIC.ggpd <- function(x,...){
 #'
 AIC.mgpd <- function(x,...){
   params <- apply(x$chain,2, mean)
-  -2*logLik(x) +ncol(x$chain)*2
+  -2*logLik(x) + (ncol(x$chain)-1)*2
 }

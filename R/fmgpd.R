@@ -3,26 +3,26 @@
 #' @importFrom stats quantile
 #' @importFrom utils capture.output
 starting.values <- function(x, k){
-  lower <- subset(x, x <= quantile(x,0.9))
-  pargpd <- unname(fpot(x,quantile(x,0.9),std.err = F)$estimate)
+  lower <- subset(x, x <= stats::quantile(x,0.9))
+  pargpd <- unname(fpot(x,stats::quantile(x,0.9),std.err = F)$estimate)
   invisible(capture.output(mix <- gammamixEM(x, k = k, epsilon = 1e-02)))
   mu <- unname(mix$gamma.pars[1,])*unname(mix$gamma.pars[2,])
   eta <- unname(mix$gamma.pars[1,])
-  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(quantile(x,0.9)), startmu = sort(mu) , starteta = eta[order(mu)], startw = mix$lambda[order(mu)]))
+  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(stats::quantile(x,0.9)), startmu = sort(mu) , starteta = eta[order(mu)], startw = rep(1/k,k)))
 }
 
 
 #' @importFrom stats uniroot
 #' @importFrom stats qnorm
 compute.var <- function(x,start,k){
-  if(start$startxi>=0 ){varxi <- 0.01} else{varxi <- 0.001}
+  if(start$startxi>=0 ){varxi <- 0.025} else{varxi <- 0.001}
   varsigma <- uniroot(function(r) qnorm(0.01, start$startsigma,r) - max(0.9*start$startsigma,0) , c(0,max(x)))$root
   varu <- uniroot(function(r) qnorm(0.01,start$startu,r) - max(0.9*start$startu,0), c(0,max(x)))$root
   varmu <- rep(0,length(start$startmu))
   for(i in 1:k){
   varmu[i] <- uniroot(function(r) qnorm(0.01,start$startmu[i],r) -  max(0.99*start$startmu[i],0), c(0,max(x)))$root
   }
-  varw <- 10
+  varw <- 0.1
   return(list(Vxi=varxi, Vsigma = varsigma, Vu = varu, Vmu = varmu, Vw = varw))
 }
 
@@ -30,12 +30,15 @@ compute.var <- function(x,start,k){
 check.input <- function(x, it, k, var, start, prior, thin, burn){
   if(any(x <=0)) stop("x must be positive")
   if(k%% 1 !=0 | k <= 0 ) stop("k must be a positive integer")
+  if(k == 1) stop("use the function fggpd")
+  if(k >4) stop("Maximum number of mixture components is 4")
   if(it %% 1 != 0 | it <= 0){stop('iterations must be a positive integer')}
   if(burn > it){stop('burn-in cannot be larger than iterations')}
   if(thin > (it-burn)){stop('thinning too large')}
   if(mode(var) != "list"){stop('var must be a list')}
   if(mode(start) != "list"){stop('start must be a list')}
   if(mode(prior) != "list"){stop('prior must be a list')}
+  if(sum(start$startw) - 1 > 0.000001) stop('weights must add to one')
   
   if(is.null(var[["Vxi"]])){stop('Vxi not provided')}
   if(is.null(var[["Vsigma"]])){stop('Vsigma not provided')}
@@ -63,7 +66,7 @@ check.input <- function(x, it, k, var, start, prior, thin, burn){
 compute.prior <- function(x,start){
   eta_mu <- start$starteta 
   eta_eta <- rep(0.001, length(start$starteta))
-  prior_u <- c(start$startu,  uniroot(function(r) qnorm(0.025,start$startu,r) - quantile(x,0.5), c(0,max(x)))$root)
+  prior_u <- c(start$startu,  uniroot(function(r) qnorm(0.025,start$startu,r) - stats::quantile(x,0.5), c(0,max(x)))$root)
   mu_mu <- start$startmu
   mu_eta <- rep(0.001, length(start$starteta))
   return(list(prior_u = prior_u, mu_mu = mu_mu, mu_eta = mu_eta, eta_mu = eta_mu, eta_eta = eta_eta))
@@ -83,7 +86,6 @@ compute.prior <- function(x,start){
 #' @export
 #' @export
 fmgpd <- function(x, it, k, start = NULL,  var = NULL, prior = NULL, thin = 1, burn = 0){
-  if(k == 1) warning("use of fggpd is recommended for k = 1")
   if(is.null(start)) start <- starting.values(x,k)
   if(is.null(var)) var <- compute.var(x,start,k)
   if(is.null(prior)) prior <- compute.prior(x,start)
@@ -108,6 +110,6 @@ fmgpd <- function(x, it, k, start = NULL,  var = NULL, prior = NULL, thin = 1, b
   mh <- c_fmgpd(x,it,k,start_gpd,start_mu,start_eta,start_w,var,prior_u, prior_mu,prior_eta)
   mh$chain <- mh$chain[seq(burn+1,nrow(mh$chain),by = thin),]
   mh$data <- x
-  class(mh) <- "mgpd"
+  class(mh) <- c("mgpd","evmm")
  return(mh)
 }
