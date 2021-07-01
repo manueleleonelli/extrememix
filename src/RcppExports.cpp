@@ -346,6 +346,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// DIC_mgpd
+double DIC_mgpd(NumericMatrix gpd, NumericMatrix mu, NumericMatrix eta, NumericMatrix w, NumericVector data);
+RcppExport SEXP _extrememix_DIC_mgpd(SEXP gpdSEXP, SEXP muSEXP, SEXP etaSEXP, SEXP wSEXP, SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type gpd(gpdSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type eta(etaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type w(wSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(DIC_mgpd(gpd, mu, eta, w, data));
+    return rcpp_result_gen;
+END_RCPP
+}
 // WAIC_ggpd
 double WAIC_ggpd(NumericMatrix chain, NumericVector data);
 RcppExport SEXP _extrememix_WAIC_ggpd(SEXP chainSEXP, SEXP dataSEXP) {
@@ -355,6 +370,21 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericMatrix >::type chain(chainSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type data(dataSEXP);
     rcpp_result_gen = Rcpp::wrap(WAIC_ggpd(chain, data));
+    return rcpp_result_gen;
+END_RCPP
+}
+// WAIC_mgpd
+double WAIC_mgpd(NumericMatrix gpd, NumericMatrix mu, NumericMatrix eta, NumericMatrix w, NumericVector data);
+RcppExport SEXP _extrememix_WAIC_mgpd(SEXP gpdSEXP, SEXP muSEXP, SEXP etaSEXP, SEXP wSEXP, SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type gpd(gpdSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type eta(etaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type w(wSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(WAIC_mgpd(gpd, mu, eta, w, data));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -493,7 +523,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_extrememix_c_fmgpd", (DL_FUNC) &_extrememix_c_fmgpd, 11},
     {"_extrememix_c_fggpd", (DL_FUNC) &_extrememix_c_fggpd, 5},
     {"_extrememix_DIC_ggpd", (DL_FUNC) &_extrememix_DIC_ggpd, 2},
+    {"_extrememix_DIC_mgpd", (DL_FUNC) &_extrememix_DIC_mgpd, 5},
     {"_extrememix_WAIC_ggpd", (DL_FUNC) &_extrememix_WAIC_ggpd, 2},
+    {"_extrememix_WAIC_mgpd", (DL_FUNC) &_extrememix_WAIC_mgpd, 5},
     {"_extrememix_c_pred_ggpd", (DL_FUNC) &_extrememix_c_pred_ggpd, 2},
     {"_extrememix_c_quant_ggpd", (DL_FUNC) &_extrememix_c_quant_ggpd, 2},
     {"_extrememix_c_es_ggpd", (DL_FUNC) &_extrememix_c_es_ggpd, 2},

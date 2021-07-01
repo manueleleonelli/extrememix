@@ -477,12 +477,45 @@ double DIC_ggpd(NumericMatrix chain, NumericVector data){
 }
 
 // [[Rcpp::export]]
+double DIC_mgpd(NumericMatrix gpd, NumericMatrix mu, NumericMatrix eta, NumericMatrix w, NumericVector data){
+  double xi = mean(gpd(_,0));
+  double sigma = mean(gpd(_,1));
+  double u = mean(gpd(_,2));
+  int k = mu.ncol();
+  NumericVector mup(k); NumericVector etap(k); NumericVector wp(k);
+  for(int i = 0; i < k; i++){
+    mup[i] = mean(mu(_,i));
+    etap[i] = mean(eta(_,i));
+    wp[i] = mean(w(_,i));
+          }
+  double d = -2*sum(log(c_dmgpd(data,xi,sigma,u,mup,etap,wp)));
+  double dbar = 0;
+  for(int i = 0; i < gpd.nrow(); i++){
+    dbar += -2*sum(log(c_dmgpd(data,gpd(i,0),gpd(i,1),gpd(i,2),mu(i,_),eta(i,_),w(i,_))));
+  }
+  return(2*dbar/gpd.nrow() - d );
+}
+
+// [[Rcpp::export]]
 double WAIC_ggpd(NumericMatrix chain, NumericVector data){
   int r = chain.nrow();
   int n = data.length();
   NumericMatrix l(r,n);
   for(int i = 0; i < r; i++){
     l(i,_) = c_dggpd(data, chain(i,0),chain(i,1),chain(i,2),chain(i,3),chain(i,4));
+  }
+  NumericVector temp(n); NumericVector temp1(n);
+  for(int i = 0; i < n; i++){temp[i] = log(sum(l(_,i))/r); temp1[i] = sum(pow(log(l(_,i))-sum(log(l(_,i)))/r,2))/(r-1);}
+  return(-2*sum(temp) +2*sum(temp1) );
+}
+
+// [[Rcpp::export]]
+double WAIC_mgpd(NumericMatrix gpd, NumericMatrix mu, NumericMatrix eta, NumericMatrix w, NumericVector data){
+  int r = gpd.nrow();
+  int n = data.length();
+  NumericMatrix l(r,n);
+  for(int i = 0; i < r; i++){
+    l(i,_) = c_dmgpd(data, gpd(i,0),gpd(i,1),gpd(i,2),mu(i,_),eta(i,_),w(i,_));
   }
   NumericVector temp(n); NumericVector temp1(n);
   for(int i = 0; i < n; i++){temp[i] = log(sum(l(_,i))/r); temp1[i] = sum(pow(log(l(_,i))-sum(log(l(_,i)))/r,2))/(r-1);}

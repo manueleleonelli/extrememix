@@ -24,7 +24,7 @@ TVaR.ggpd <- function(x,values = NULL, cred = 0.95, ...){
   mean <- round(apply(out,2,mean),2)
   lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
   upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
-  empirical <- unname(stats::quantile(x$data,quant))
+  empirical <- round(unname(stats::quantile(x$data,quant)),2)
   for (i in 1:length(empirical)) empirical[i] <- mean(x$data[x$data>= empirical[i]]) + empirical[i]
   quantiles <- cbind(values,mean, lower, upper,empirical)
   colnames(quantiles) <- c("TVaR_Level","estimate","lower_ci","upper_ci","empirical")
@@ -52,7 +52,7 @@ TVaR.mgpd <- function(x,values = NULL, cred = 0.95, ...){
   mean <- round(apply(out,2,mean),2)
   lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
   upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
-  empirical <- unname(stats::quantile(x$data,quant))
+  empirical <- round(unname(stats::quantile(x$data,quant)),2)
   for (i in 1:length(empirical)) empirical[i] <- mean(x$data[x$data>= empirical[i]]) + empirical[i]
   quantiles <- cbind(values,mean, lower, upper,empirical)
   colnames(quantiles) <- c("TVaR_Level","estimate","lower_ci","upper_ci","empirical")

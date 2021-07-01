@@ -11,6 +11,19 @@ print.ggpd <- function(x, ...) {
   invisible(x)
 }
 
+#' Print a mgpd
+#'
+#' @param x an object of class \code{mgpd}.
+#' @param ... additional parameters (compatibility).
+#'
+#' @details Info
+#' @export
+
+print.mgpd <- function(x, ...) {
+  cat("EVMM with", (ncol(x$chain)-3)/3, "Mixtures of Gamma bulk. LogLik", logLik(x), "\nxi estimated as ", mean(x$chain[,1]), "\nProbability of unbounded distribution ", upper_bound(x)$prob)
+  invisible(x)
+}
+
 #' Summary of a ggpd
 #' @param object an object of class \code{ggpd}.
 #' @param ... additional parameters (compatibility).
@@ -29,6 +42,30 @@ summary.ggpd <- function(object,...){
  colnames(out) <- c("estimate","lower_ci","upper_ci")
  return(out)
 
+}
+
+#' Summary of a mgpd
+#' @param object an object of class \code{mgpd}.
+#' @param ... additional parameters (compatibility).
+#'
+#' @details Info
+#' @export
+
+summary.mgpd <- function(object,...){
+  x <- object
+  mean <- round(apply(x$chain, 2, mean),2)
+  upper <- round(apply(x$chain,2, function(x) sort(x)[round(0.975*length(x))]),2)
+  lower <- round(apply(x$chain,2, function(x) sort(x)[round(0.025*length(x))]),2)
+  k <- (ncol(x$chain) -3)/3
+  if(k ==2){mu <- c("mu1","mu2"); eta <- c("eta1","eta2"); w <- c("w1","w2")}
+  if(k ==3){mu <- c("mu1","mu2","mu3"); eta <- c("eta1","eta2","eta3"); w <- c("w1","w2","w3")}
+  if(k ==4){mu <- c("mu1","mu2","mu3","mu4"); eta <- c("eta1","eta2","eta3","eta4"); w <- c("w1","w2","w3","w4")}
+  names <- c("xi", "sigma","u",mu,eta,w)
+  out <- data.frame(mean,lower,upper)
+  rownames(out) <- names
+  colnames(out) <- c("estimate","lower_ci","upper_ci")
+  return(out)
+  
 }
 
 #'@export

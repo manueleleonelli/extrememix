@@ -3,11 +3,14 @@
 \name{WAIC}
 \alias{WAIC}
 \alias{WAIC.ggpd}
+\alias{WAIC.mgpd}
 \title{DIC model selection criterion}
 \usage{
 WAIC(x, ...)
 
 \method{WAIC}{ggpd}(x, ...)
+
+\method{WAIC}{mgpd}(x, ...)
 }
 \arguments{
 \item{x}{the output of a model estimated with \code{extremix}}

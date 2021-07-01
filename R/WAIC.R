@@ -22,4 +22,17 @@ WAIC.ggpd <- function(x,...){
 }
 
 
+#' @method WAIC mgpd
+#'@export
+#' @rdname WAIC
+#'
+WAIC.mgpd <- function(x,...){
+  k <- (ncol(x$chain)-3)/3
+  gpd <- x$chain[,1:3]
+  mu <- x$chain[,4:(4+k-1)]
+  eta <- x$chain[,(4+k):(4+2*k-1)]
+  w <- x$chain[,(4+2*k):ncol(x$chain)]
+  WAIC_mgpd(gpd,mu,eta,w,x$data)
+}
+  
 

@@ -93,8 +93,16 @@ DIC_ggpd <- function(chain, data) {
     .Call('_extrememix_DIC_ggpd', PACKAGE = 'extrememix', chain, data)
 }
 
+DIC_mgpd <- function(gpd, mu, eta, w, data) {
+    .Call('_extrememix_DIC_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, data)
+}
+
 WAIC_ggpd <- function(chain, data) {
     .Call('_extrememix_WAIC_ggpd', PACKAGE = 'extrememix', chain, data)
+}
+
+WAIC_mgpd <- function(gpd, mu, eta, w, data) {
+    .Call('_extrememix_WAIC_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, data)
 }
 
 c_pred_ggpd <- function(x, chain) {
