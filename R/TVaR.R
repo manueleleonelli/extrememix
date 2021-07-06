@@ -18,7 +18,7 @@ TVaR <- function (x, ...) {
 #'@param values vector of points where to estimate the predictive distribution
 #'@param cred amplitude of the posterior credibility interval
 TVaR.ggpd <- function(x,values = NULL, cred = 0.95, ...){
-  if(is.null(values)) {values <- c(0.1,0.25,0.5,0.75,1,1.5,2,2.5,3,4,5)}
+  if(is.null(values)) {values <- c(0.5,0.75,1,1.5,2,2.5,3,4,5)}
   quant <- 1-values/100
   out <- c_tvar_ggpd(x$chain,quant)
   mean <- round(apply(out,2,mean),2)
@@ -41,7 +41,7 @@ TVaR.ggpd <- function(x,values = NULL, cred = 0.95, ...){
 #'@param values vector of points where to estimate the predictive distribution
 #'@param cred amplitude of the posterior credibility interval
 TVaR.mgpd <- function(x,values = NULL, cred = 0.95, ...){
-  if(is.null(values)) {values <- c(0.1,0.25,0.5,0.75,1,1.5,2,2.5,3,4,5)}
+  if(is.null(values)) {values <- c(0.5,0.75,1,1.5,2,2.5,3,4,5)}
   quant <- 1-values/100
   k <- (ncol(x$chain)-3)/3;
   gpd <- x$chain[,1:3]

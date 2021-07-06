@@ -15,13 +15,14 @@ check_convergence <- function (x, ...) {
 #' @rdname check_convergence
 #'
 check_convergence.evmm <- function(x, ...){
-  quant <- quantile(x,0.99)$complete
-  p1 <- ggplot(data.frame(quant), aes(x = 1:length(quant),y = quant)) + geom_line() + labs(x ="Index", y = "Quantile") + theme_bw()
+  quantil <- quant(x,0.99)$complete
+  p1 <- ggplot(data.frame(quantil), aes(x = 1:length(quantil),y = quantil)) + geom_line() + labs(x ="Index", y = "Quantile") + theme_bw()
   p2 <- suppressWarnings(ggacf(quant))
   grid.arrange(p1,p2,ncol=2)
 }
 
 ggacf <- function(series) {
+  acf <- lag <- NULL
   significance_level <- qnorm((1 + 0.95)/2)/sqrt(sum(!is.na(series)))  
   a<-acf(series, plot=F)
   a.2<-with(a, data.frame(lag, acf))

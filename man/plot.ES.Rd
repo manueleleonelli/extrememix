@@ -4,10 +4,12 @@
 \alias{plot.ES}
 \title{Plot ESs}
 \usage{
-\method{plot}{ES}(x, ...)
+\method{plot}{ES}(x, ylim = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class \code{ES}.}
+
+\item{ylim}{ciao}
 
 \item{...}{additional parameters (compatibility).}
 }

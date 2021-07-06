@@ -4,10 +4,12 @@
 \alias{plot.return_level}
 \title{Plot return levels}
 \usage{
-\method{plot}{return_level}(x, ...)
+\method{plot}{return_level}(x, ylim = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class \code{return_level}.}
+
+\item{ylim}{ciao}
 
 \item{...}{additional parameters (compatibility).}
 }

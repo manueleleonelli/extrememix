@@ -106,7 +106,7 @@ double c_rmgamma(NumericVector mu, NumericVector eta, NumericVector w){
   double u = R::runif(0,1);
   if(u <= cw[0]){ index = 0;}
   for(int i = 0; i < (n-1); i++ ){
-    if(u > cw[i] & u <= cw[i+1]){
+    if(u > cw[i] && u <= cw[i+1]){
       index = i+1;
       }
     }

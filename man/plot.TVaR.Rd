@@ -4,10 +4,12 @@
 \alias{plot.TVaR}
 \title{Plot TVaRs}
 \usage{
-\method{plot}{TVaR}(x, ...)
+\method{plot}{TVaR}(x, ylim = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class \code{TVaR}.}
+
+\item{ylim}{ciao}
 
 \item{...}{additional parameters (compatibility).}
 }

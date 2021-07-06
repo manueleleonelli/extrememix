@@ -8,18 +8,36 @@
 \usage{
 pred(x, ...)
 
-\method{pred}{ggpd}(x, x_axis = seq(0, max(x$data), 0.01), cred = 0.95, ...)
+\method{pred}{ggpd}(
+  x,
+  x_axis = seq(min(x$data), max(x$data), length.out = 1000),
+  cred = 0.95,
+  xlim = c(min(x$data), max(x$data)),
+  ylim = NULL,
+  ...
+)
 
-\method{pred}{mgpd}(x, x_axis = seq(0, max(x$data), 0.01), cred = 0.95, ...)
+\method{pred}{mgpd}(
+  x,
+  x_axis = seq(min(x$data), max(x$data), length.out = 1000),
+  cred = 0.95,
+  xlim = c(min(x$data), max(x$data)),
+  ylim = NULL,
+  ...
+)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{ciao}
 
 \item{...}{for compatibility}
 
 \item{x_axis}{vector of points where to estimate the predictive distribution}
 
 \item{cred}{amplitude of the posterior credibility interval}
+
+\item{xlim}{ciao}
+
+\item{ylim}{ciao}
 }
 \description{
 Plot of the predictive distribution of an extreme value mixture model

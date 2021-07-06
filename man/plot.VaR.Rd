@@ -4,10 +4,12 @@
 \alias{plot.VaR}
 \title{Plot VaRs}
 \usage{
-\method{plot}{VaR}(x, ...)
+\method{plot}{VaR}(x, ylim = NULL, ...)
 }
 \arguments{
 \item{x}{an object of class \code{VaR}.}
+
+\item{ylim}{ciao}
 
 \item{...}{additional parameters (compatibility).}
 }

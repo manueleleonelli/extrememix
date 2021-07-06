@@ -12,3 +12,7 @@ Imports:
 LinkingTo: Rcpp
 Encoding: UTF-8
 RoxygenNote: 7.1.1
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

@@ -4,24 +4,24 @@
 #'
 #' @param x the output of a model estimated with \code{extremix}
 #' @param ... for compatibility
-#' @name quantile
+#' @name quant
 #' @export
-quantile <- function (x, ...) {
-  UseMethod("quantile", x)
+quant <- function (x, ...) {
+  UseMethod("quant", x)
 }
 
 
 
-#' @method quantile ggpd
+#' @method quant ggpd
 #' @importFrom ggplot2 ggplot geom_line geom_ribbon theme_bw
 #' @import ggplot2
 #'@export
-#' @rdname quantile
+#' @rdname quant
 #'
 #'@param values vector of points where to estimate the predictive distribution
 #'@param cred amplitude of the posterior credibility interval
-quantile.ggpd <- function(x,values = NULL, cred = 0.95, ...){
-   if(is.null(values)) {values <- c(0.95,0.955,0.96,0.965,0.97,0.975,0.98,0.985,0.99,0.9925,0.995,0.9975,0.999,0.99925,0.9995)}
+quant.ggpd <- function(x,values = NULL, cred = 0.95, ...){
+   if(is.null(values)) {values <- c(0.95,0.955,0.96,0.965,0.97,0.975,0.98,0.985,0.99,0.9925,0.995)}
    out <- c_quant_ggpd(x$chain,values)
    mean <- round(apply(out,2,mean),2)
    lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
@@ -30,21 +30,21 @@ quantile.ggpd <- function(x,values = NULL, cred = 0.95, ...){
    quantiles <- cbind(values,mean, lower, upper,empirical)
    colnames(quantiles) <- c("quantiles","estimate","lower_ci","upper_ci","empirical")
    output <- list(quantiles = quantiles, data = x$data, complete = out)
-   class(output) <- "quantile"
+   class(output) <- "quant"
    return(output)
   }
 
 
-#' @method quantile mgpd
+#' @method quant mgpd
 #' @importFrom ggplot2 ggplot geom_line geom_ribbon theme_bw
 #' @import ggplot2
 #'@export
-#' @rdname quantile
+#' @rdname quant
 #'
 #'@param values vector of points where to estimate the predictive distribution
 #'@param cred amplitude of the posterior credibility interval
-quantile.mgpd <- function(x,values = NULL, cred = 0.95, ...){
-   if(is.null(values)) {values <- c(0.95,0.955,0.96,0.965,0.97,0.975,0.98,0.985,0.99,0.9925,0.995,0.9975,0.999,0.99925,0.9995)}
+quant.mgpd <- function(x,values = NULL, cred = 0.95, ...){
+   if(is.null(values)) {values <- c(0.95,0.955,0.96,0.965,0.97,0.975,0.98,0.985,0.99,0.9925,0.995)}
    k <- (ncol(x$chain)-3)/3;
    gpd <- x$chain[,1:3]
    mu <- x$chain[,4:(4+k-1)]
@@ -58,7 +58,7 @@ quantile.mgpd <- function(x,values = NULL, cred = 0.95, ...){
    quantiles <- cbind(values,mean, lower, upper,empirical)
    colnames(quantiles) <- c("quantiles","estimate","lower_ci","upper_ci","empirical")
    output <- list(quantiles = quantiles, data = x$data, complete = out)
-   class(output) <- "quantile"
+   class(output) <- "quant"
    return(output)
 }
 
