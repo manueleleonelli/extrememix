@@ -4,10 +4,12 @@
 \alias{plot.upper_bound}
 \title{Plot Upper Bounds}
 \usage{
-\method{plot}{upper_bound}(x, ...)
+\method{plot}{upper_bound}(x, xlim = c(min(x$bound), max(x$bound)), ...)
 }
 \arguments{
 \item{x}{an object of class \code{upper_bound}.}
+
+\item{xlim}{ciao}
 
 \item{...}{additional parameters (compatibility).}
 }

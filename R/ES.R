@@ -10,6 +10,7 @@ ES <- function (x, ...) {
   UseMethod("ES", x)
 }
 
+median <- function(x){stats::quantile(x,0.5,type=2)}
 
 #' @method ES ggpd
 #'@export
@@ -21,7 +22,7 @@ ES.ggpd <- function(x,values = NULL, cred = 0.95, ...){
   if(is.null(values)) {values <- c(0.5,0.75,1,1.5,2,2.5,3,4,5)}
   quant <- 1-values/100
   out <- c_es_ggpd(x$chain,quant)
-  mean <- round(apply(out,2,mean),2)
+  mean <- round(apply(out,2,median),2)
   lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
   upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
   empirical <- round(unname(stats::quantile(x$data,quant,type = 2)),2)
@@ -48,7 +49,7 @@ ES.mgpd <- function(x,values = NULL, cred = 0.95, ...){
   eta <- x$chain[,(4+k):(4+2*k-1)]
   w <- x$chain[,(4+2*k):ncol(x$chain)]
   out <- c_es_mgpd(gpd,mu,eta,w,quant)
-  mean <- round(apply(out,2,mean),2)
+  mean <- round(apply(out,2,median),2)
   lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
   upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
   empirical <- round(unname(stats::quantile(x$data,quant, type = 2)))

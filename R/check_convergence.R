@@ -17,7 +17,7 @@ check_convergence <- function (x, ...) {
 check_convergence.evmm <- function(x, ...){
   quantil <- quant(x,0.99)$complete
   p1 <- ggplot(data.frame(quantil), aes(x = 1:length(quantil),y = quantil)) + geom_line() + labs(x ="Index", y = "Quantile") + theme_bw()
-  p2 <- suppressWarnings(ggacf(quant))
+  p2 <- suppressWarnings(ggacf(quantil))
   grid.arrange(p1,p2,ncol=2)
 }
 

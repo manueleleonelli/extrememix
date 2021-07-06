@@ -3,23 +3,24 @@
 \docType{data}
 \name{rainfall}
 \alias{rainfall}
-\title{Prices of 50,000 round cut diamonds.}
+\title{Math Marks Data}
 \format{
-A data frame with 53940 rows and 10 variables:
-\describe{
-  \item{price}{price, in US dollars}
-  \item{carat}{weight of the diamond, in carats}
-  ...
+A dataframe with 88 observations on the following 5 variables
+\itemize{
+   \item \bold{mechanics}: mark out of 100 for mechanics
+   \item \bold{vectors}: mark out of 100 for vectors
+   \item \bold{algebra}: mark out of 100 for algebra
+   \item \bold{analysis}: mark out of 100 for analysis
+   \item \bold{statistics}: mark out of 100 for statistics
 }
 }
 \source{
-\url{http://www.diamondse.info/}
+Mardia, K. V., Kent, J. T. and Bibby, J. M. (1979) Multivariate Analysis. London: Academic Press.
 }
 \usage{
-rainfall
+data(rainfall)
 }
 \description{
-A dataset containing the prices and other attributes of almost 54,000
-diamonds.
+Marks out of 100 for 88 students taking examinations in mechanics (C), vectors (C), algebra (0), analysis (O) and statistics (O), where C indicates closed and O indicates open book examination.
 }
 \keyword{datasets}

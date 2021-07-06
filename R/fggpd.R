@@ -1,8 +1,10 @@
+#' @importFrom threshr ithresh
 #' @importFrom stats var
 ggpd.starting.values <- function(x){
-  lower <- subset(x, x <= stats::quantile(x,0.9))
-  pargpd <- unname(fpot(x,stats::quantile(x,0.9),std.err = F)$estimate)
-  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(stats::quantile(x,0.9)), startmu = mean(lower), starteta = mean(lower)^2/var(lower)))
+  u <- unname(summary(ithresh(data = x, u_vec =  stats::quantile(x, probs = seq(0.75, 0.95, by = 0.05)), n = 100)))[3]
+  lower <- subset(x, x <= u)
+  pargpd <- unname(fpot(x,u,std.err = F)$estimate)
+  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = u, startmu = mean(lower), starteta = mean(lower)^2/var(lower)))
 }
 
 
@@ -15,10 +17,10 @@ ggpd.compute.var <- function(x,start){
   return(list(Vxi=varxi, Vsigma = varsigma, Vu = varu, Vmu = varmu, Veta = vareta))
 }
 
-
+#' @importFrom stats quantile
 ggpd.compute.prior <- function(x,start){
   prior.eta <- list(c = start$starteta, d = 0.001)
-  prior.u <- list(mean = start$startu, sd = uniroot(function(r) qnorm(0.025,start$startu,r) - stats::quantile(x,0.5), c(0,max(x)))$root)
+  prior.u <- list(mean = start$startu, sd = uniroot(function(r) qnorm(0.05,start$startu,r) - stats::quantile(x,0.5), c(0,max(x)))$root)
   prior.mu <- list(a = start$startmu, b = 0.001)
   return(list(u = prior.u, mu = prior.mu, eta = prior.eta))
 }

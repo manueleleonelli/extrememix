@@ -113,17 +113,18 @@ plot.TVaR <- function(x, ylim = NULL, ...) {
 #' Plot Upper Bounds
 #'
 #' @param x an object of class \code{upper_bound}.
+#' @param xlim ciao
 #' @param ... additional parameters (compatibility).
 #'
 #' @details Info
 #' @export
 
-plot.upper_bound <- function(x, ...) {
+plot.upper_bound <- function(x, xlim = c(min(x$bound),max(x$bound)),...) {
   IQR <- ..density.. <- NULL
 if (x$prob == 1){stop("No plot created since probability of unbounded distribution is 1")}
   else{
-    x.bound <- NULL
-    ggplot(data.frame(x$bound), aes(x=x.bound)) +    geom_histogram(aes(y=..density..), binwidth =  2*length(x$bound)^(-1/3)*IQR(x$bound), colour="black", fill="white") + theme_bw()+ xlab(cat("Upper Bound, with probability ", 1 - x$prob))
+    x.bound <- x$bound[x$bound >= xlim[1] & x$bound <= xlim[2]]
+    ggplot(data.frame(x.bound), aes(x=x.bound)) +    geom_histogram(aes(y=..density..), binwidth =  2*length(x.bound)^(-1/3)*IQR(x.bound), colour="black", fill="white") + theme_bw()+ xlab(cat("Upper Bound, with probability ", 1 - x$prob)) 
   }
 }
 
@@ -137,11 +138,11 @@ if (x$prob == 1){stop("No plot created since probability of unbounded distributi
 
 plot.evmm <- function(x, ...) {
   X1 <- ..density.. <- X2 <- IQR <- NULL
-  p1 <- ggplot(data.frame(x$chain), aes(x = X1)) + geom_histogram(aes(y=..density..), binwidth = 2*nrow(x$chain)^(-1/3)*IQR(x$chain[,1]), colour="black", fill="white") + labs(x = "xi") + theme_bw() +geom_vline(xintercept=mean(x$chain[,1]), linetype="dashed", 
+  p1 <- ggplot(data.frame(x$chain), aes(x = X1)) + geom_histogram(aes(y=..density..), binwidth = 2*nrow(x$chain)^(-1/3)*IQR(x$chain[,1]), colour="black", fill="white") + labs(x = "xi") + theme_bw() +geom_vline(xintercept=median(x$chain[,1]), linetype="dashed", 
                                                                                                                                          color = "red")
-  p2 <- ggplot(data.frame(x$chain), aes(x = X2)) + geom_histogram(aes(y=..density..), binwidth = 2*length(x$chain)^(-1/3)*IQR(x$chain[,2]), colour="black", fill="white") + labs(x = "sigma") + theme_bw() +geom_vline(xintercept=mean(x$chain[,2]), linetype="dashed", 
+  p2 <- ggplot(data.frame(x$chain), aes(x = X2)) + geom_histogram(aes(y=..density..), binwidth = 2*length(x$chain)^(-1/3)*IQR(x$chain[,2]), colour="black", fill="white") + labs(x = "sigma") + theme_bw() +geom_vline(xintercept=median(x$chain[,2]), linetype="dashed", 
                                                                                                                                                                                                       color = "red")
-  p3 <- plot(quantile(x),...)
+  p3 <- plot(quant(x),...)
   p4 <- pred(x,...)
   grid.arrange(p1,p2,p3,p4,ncol = 2, nrow =2)
 }

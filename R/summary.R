@@ -7,7 +7,7 @@
 #' @export
 
 print.ggpd <- function(x, ...) {
-  cat("EVMM with Gamma bulk. LogLik", logLik(x), "\nxi estimated as ", mean(x$chain[,1]), "\nProbability of unbounded distribution ", upper_bound(x)$prob)
+  cat("EVMM with Gamma bulk. LogLik", logLik(x), "\nxi estimated as ", median(x$chain[,1]), "\nProbability of unbounded distribution ", upper_bound(x)$prob)
   invisible(x)
 }
 
@@ -20,7 +20,7 @@ print.ggpd <- function(x, ...) {
 #' @export
 
 print.mgpd <- function(x, ...) {
-  cat("EVMM with", (ncol(x$chain)-3)/3, "Mixtures of Gamma bulk. LogLik", logLik(x), "\nxi estimated as ", mean(x$chain[,1]), "\nProbability of unbounded distribution ", upper_bound(x)$prob)
+  cat("EVMM with", (ncol(x$chain)-3)/3, "Mixtures of Gamma bulk. LogLik", logLik(x), "\nxi estimated as ", median(x$chain[,1]), "\nProbability of unbounded distribution ", upper_bound(x)$prob)
   invisible(x)
 }
 
@@ -33,7 +33,7 @@ print.mgpd <- function(x, ...) {
 
 summary.ggpd <- function(object,...){
   x <- object
- mean <- round(apply(x$chain, 2, mean),2)
+ mean <- round(apply(x$chain, 2, median),2)
  upper <- round(apply(x$chain,2, function(x) sort(x)[round(0.975*length(x))]),2)
  lower <- round(apply(x$chain,2, function(x) sort(x)[round(0.025*length(x))]),2)
  names <- c("xi", "sigma","u","mu","eta")
@@ -53,7 +53,7 @@ summary.ggpd <- function(object,...){
 
 summary.mgpd <- function(object,...){
   x <- object
-  mean <- round(apply(x$chain, 2, mean),2)
+  mean <- round(apply(x$chain, 2, median),2)
   upper <- round(apply(x$chain,2, function(x) sort(x)[round(0.975*length(x))]),2)
   lower <- round(apply(x$chain,2, function(x) sort(x)[round(0.025*length(x))]),2)
   k <- (ncol(x$chain) -3)/3
@@ -146,7 +146,7 @@ print.TVaR <- function(x, ...) {
 
 print.upper_bound <- function(x, ...) {
   if(x$prob < 1){
-  cat("Probability of unbounded distribution: ", x$prob, "\nEstimated upper bound at ", round(mean(x$bound),2), " with probability ", 1-x$prob, "\n Credibility interval at ", x$cred, "%: (", round(sort(x$bound)[round((1-x$cred)/2*length(x$bound))],2),",", round(sort(x$bound)[round((x$cred + (1-x$cred)/2)*length(x$bound))],2) ,")" )
+  cat("Probability of unbounded distribution: ", x$prob, "\nEstimated upper bound at ", round(median(x$bound),2), " with probability ", 1-x$prob, "\n Credibility interval at ", x$cred, "%: (", round(sort(x$bound)[round((1-x$cred)/2*length(x$bound))],2),",", round(sort(x$bound)[round((x$cred + (1-x$cred)/2)*length(x$bound))],2) ,")" )
   invisible(x)
   }
   else{

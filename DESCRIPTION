@@ -1,14 +1,14 @@
 Package: extrememix
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Bayesian Estimation of Extreme Value Mixture Models
 Version: 1.0
 Date: 2021-06-21
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full sentences.
+Author: Manuele Leonelli
+Maintainer: Manuele Leonelli <manuele.leonelli@ie.edu>
+Description: Fits extreme value mixture models, which are models for tails not requiring selection of a threshold, for continuous data. It includes functions for model comparison, estimation of quantity of interest in extreme value analysis and plotting. 
 License: GPL (>= 2)
 Imports: 
-   evd, ggplot2, gridExtra, mixtools, Rcpp
+   evd, ggplot2, gridExtra, mixtools, Rcpp, threshr
 LinkingTo: Rcpp
 Encoding: UTF-8
 RoxygenNote: 7.1.1
@@ -16,3 +16,4 @@ Suggests:
     rmarkdown,
     knitr
 VignetteBuilder: knitr
+URL: https://github.com/manueleleonelli/extrememix

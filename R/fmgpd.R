@@ -2,13 +2,15 @@
 #' @import evd
 #' @importFrom stats quantile
 #' @importFrom utils capture.output
+#' @importFrom threshr ithresh
 starting.values <- function(x, k){
-  lower <- subset(x, x <= stats::quantile(x,0.9))
+  u <- unname(summary(ithresh(data = x,  u_vec =  stats::quantile(x, probs = seq(0.75, 0.95, by = 0.05)), n = 100)))[3]
+  lower <- subset(x, x <= u)
   pargpd <- unname(fpot(x,stats::quantile(x,0.9),std.err = F)$estimate)
   invisible(capture.output(mix <- gammamixEM(x, k = k, epsilon = 1e-02)))
   mu <- unname(mix$gamma.pars[1,])*unname(mix$gamma.pars[2,])
   eta <- unname(mix$gamma.pars[1,])
-  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = unname(stats::quantile(x,0.9)), startmu = sort(mu) , starteta = eta[order(mu)], startw = rep(1/k,k)))
+  return(list(startxi = max(-0.4,pargpd[2]),startsigma = pargpd[1], startu = u, startmu = sort(mu) , starteta = eta[order(mu)], startw = rep(1/k,k)))
 }
 
 

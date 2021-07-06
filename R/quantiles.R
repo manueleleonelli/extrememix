@@ -23,7 +23,7 @@ quant <- function (x, ...) {
 quant.ggpd <- function(x,values = NULL, cred = 0.95, ...){
    if(is.null(values)) {values <- c(0.95,0.955,0.96,0.965,0.97,0.975,0.98,0.985,0.99,0.9925,0.995)}
    out <- c_quant_ggpd(x$chain,values)
-   mean <- round(apply(out,2,mean),2)
+   mean <- round(apply(out,2,median),2)
    lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
    upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
    empirical <- round(unname(stats::quantile(x$data,values)),2)
@@ -51,7 +51,7 @@ quant.mgpd <- function(x,values = NULL, cred = 0.95, ...){
    eta <- x$chain[,(4+k):(4+2*k-1)]
    w <- x$chain[,(4+2*k):ncol(x$chain)]
    out <- c_quant_mgpd(gpd,mu,eta,w,values)
-   mean <- round(apply(out,2,mean),2)
+   mean <- round(apply(out,2,median),2)
    lower <- round(apply(out,2,function(x)sort(x)[round(((1-cred)/2)*nrow(out))]),2)
    upper <- round(apply(out,2, function(x) sort(x)[round((cred+(1-cred)/2)*nrow(out))]),2)
    empirical <- round(unname(stats::quantile(x$data,values)),2)
