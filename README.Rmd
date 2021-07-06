@@ -1,0 +1,30 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# extrememix
+
+`extrememix` implements Bayesian estimation of extreme value mixture models, estimating the threshold over which a Generalized Pareto distribution can be assumed as well as high quantiles and other measures of interest in extreme value theory.
+
+## Installation 
+
+The package `extrememix` can be installed from GitHub using the command 
+```{r warning = FALSE, message = FALSE, eval = F}
+# install.packages("devtools")
+devtools::install_github("manueleleonelli/extrememix")
+```
+and loaded in R with
+```{r}
+library(extrememix)
+```
