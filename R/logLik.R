@@ -1,25 +1,16 @@
 #' Log-likelihood method
-#'
-#' Computation of the log-likelihood for an extreme value mixture model
-#'
-#' @param x the output of a model estimated with \code{extremix}
-#' @param ... for compatibility
-#' @name logLik
-#' @return The log-likelihood of a model estimated with \code{extrememix}
-#' @export
-logLik <- function (x, ...) {
-  UseMethod("logLik", x)
-}
-
-
-
 #' @method logLik ggpd
 #'@export
 #' @rdname logLik
 #'
-logLik.ggpd <- function(x,...){
-  params <- apply(x$chain,2, mean)
-  sum(dggpd(x$data,params[1],params[2],params[3],params[4],params[5],log = T))
+logLik.ggpd <- function(object,...){
+  x <- object
+  params <- apply(x$chain,2, median)
+  ll <- sum(dggpd(x$data,params[1],params[2],params[3],params[4],params[5],log = T))
+  attr(ll, "df") <- 5
+  attr(ll,"nobs") <- length(object$data)
+  class(ll) <- "logLik"
+  return(ll)
 }
 
 
@@ -27,8 +18,13 @@ logLik.ggpd <- function(x,...){
 #'@export
 #' @rdname logLik
 #'
-logLik.mgpd <- function(x,...){
+logLik.mgpd <- function(object,...){
+  x <- object
   params <- apply(x$chain,2, mean)
   k <- (ncol(x$chain)-3)/3
-  sum(dmgpd(x$data,params[1],params[2],params[3],params[4:(4+k-1)],params[(4+k):(4+2*k-1)],params[(4+2*k):ncol(x$chain)],log = T))
-}
+  ll <- sum(dmgpd(x$data,params[1],params[2],params[3],params[4:(4+k-1)],params[(4+k):(4+2*k-1)],params[(4+2*k):ncol(x$chain)],log = T))
+  attr(ll, "df") <- (ncol(object$chain)-1)
+  attr(ll,"nobs") <- length(object$data)
+  class(ll) <- "logLik"
+  return(ll)
+  }
