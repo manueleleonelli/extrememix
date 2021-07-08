@@ -1,9 +1,29 @@
-#' VaR Method
+#' Value-at-Risk
 #'
-#' Compute and plot VaRs
+#' Computation of the Value-at-Risk for an extreme value mixture model.
 #'
-#' @param x the output of a model estimated with \code{extremix}
-#' @param ... for compatibility
+#' The Value-at-Risk for level q\% is defined as the 1-q/100 quantile of the model.
+#'
+#' @param x the output of a model estimated with \code{extrememix}
+#' @param ... additional arguments for compatibility.
+#' 
+#' @seealso  \code{\link{ES}}, \code{\link{quant}}, \code{\link{return_level}}
+#' 
+#' @references Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.
+#' 
+#'
+#' @return A list with the following entries: \itemize{
+#' \item \code{quantiles}: a matrix containing the estimated value at risk, the posterior credibility intervals and the empirical estimate.
+#' \item \code{data}: the dataset used to estimate the value at risk.
+#' \item \code{complete}: a matrix with the value at risk for each value in the posterior sample.
+#' }
+#' 
+#' @examples \dontrun{
+#' data(rainfall)
+#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+#' VaR(model1)
+#' }
+
 #' @name VaR
 #' @export
 VaR <- function (x, ...) {
@@ -15,8 +35,8 @@ VaR <- function (x, ...) {
 #'@export
 #' @rdname VaR
 #'
-#'@param values vector of points where to estimate the predictive distribution
-#'@param cred amplitude of the posterior credibility interval
+#'@param values numeric vector of values of which to compute the value at risk.
+#'@param cred amplitude of the posterior credibility interval.
 VaR.evmm <- function(x,values = NULL, cred = 0.95, ...){
   if(is.null(values)) {values <- c(0.5,0.75,1,1.5,2,2.5,3,4,5)}
   quantil <- 1-values/100

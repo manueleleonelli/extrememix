@@ -67,15 +67,15 @@ As an alternative model we consider the MGPD (mixture of gammas bulk/GPD tail) w
 
 
 
-The starting values can be set creating a list with entries `startxi`, `startsigma`, `startu`, `startmu`, `starteta` and `startw`. The proposal variances can be set creating a list with entries `Vxi`, `Vsigma`, `Vu`, `Vmu` and `Vw` (for each mixture component the parameters $\mu$ and $\eta$ are sampled jointly). The prior distribution can be set creating a list with entries `prior_u` (a vector with the mean and standard deviation of the prior normal distribution for $u$), `mu_mu` (a vector with the prior means of the Gamma distributions for $\mu$), `mu_eta` (a vector with the prior shapes of the Gamma distributions for $\mu$), `eta_mu` (a vector with the prior means of the Gamma distributions for $\eta$) and `eta_eta`  (a vector with the prior shapes of the Gamma distributions for $\eta$).
+The starting values can be set creating a list with entries `xi`, `sigma`, `u`, `mu`, `eta` and `w`. The proposal variances can be set creating a list with entries `xi`, `sigma`, `u`, `mu` and `w` (for each mixture component the parameters $\mu$ and $\eta$ are sampled jointly). The prior distribution can be set creating a list with entries `u` (a vector with the mean and standard deviation of the prior normal distribution for $u$), `mu_mu` (a vector with the prior means of the Gamma distributions for $\mu$), `mu_eta` (a vector with the prior shapes of the Gamma distributions for $\mu$), `eta_mu` (a vector with the prior means of the Gamma distributions for $\eta$) and `eta_eta`  (a vector with the prior shapes of the Gamma distributions for $\eta$).
 
 
 
 ```{r cache = TRUE}
-start <- list(startxi = 0.2, startsigma = 5, startu = quantile(rainfall,0.9), 
-              startmu = c(4,10), starteta = c(1,4), startw = c(0.5,0.5))
-var <- list(Vxi = 0.001, Vsigma = 1, Vu = 2, Vmu = c(0.1,0.1), Vw = 0.1)
-prior <- list(prior_u = c(22,5), mu_mu = c(4,16), mu_eta = c(0.001,0.001),
+start <- list(xi = 0.2, sigma = 5, u = quantile(rainfall,0.9), 
+              mu = c(4,10), eta = c(1,4), w = c(0.5,0.5))
+var <- list(xi = 0.001, sigma = 1, u = 2, mu = c(0.1,0.1), w = 0.1)
+prior <- list(u = c(22,5), mu_mu = c(4,16), mu_eta = c(0.001,0.001),
               eta_mu = c(1,4), eta_eta = c(0.001,0.001))
 model2 <- fmgpd(rainfall, k =2, it = 50000, burn = 10000, thin = 40,
                 start = start, var = var, prior = prior)
@@ -102,7 +102,7 @@ Since the MGPD model has one weight equal to zero, a GGPD is recommended. We can
 rbind(c(BIC(model1),BIC(model2)),c(DIC(model1),DIC(model2)),c(WAIC(model1),WAIC(model2)))
 ```
 
-For simplicity, here we considered three model selection criteria. DIC favors the MGPD, whilst BIC and WAIC favor the GGPD. As already noticed in the literature, the use of WAIC is recommended and indeed it selects the GGPD model.
+For simplicity, here we considered three model selection criteria. BIC, DIC and WAIC  all favor the GGPD. As already noticed in the literature, the use of WAIC is recommended and indeed it selects the GGPD model.
 
 We therefore next investigate the use of the GGPD model to assess rainfall in the city of Madrid. The `plot` method gives an overview of the model reporting the histogram of the distributions of $\xi$ and $\sigma$, a plot of the quantiles and a plot of the predictive distribution.
 ```{r fig.align = "center", out.width = "50%"}
@@ -141,5 +141,5 @@ upper_bound(model1)
 plot(upper_bound(model1), xlim = c(20,400))
 ```
 
-The maximum rainfall that could be observed in Madrid is estimated as 84.77. Furthermore, since in the posterior sample there are some values of $\xi$ which are positive, we have a non-zero probability that the distribution is right-unbounded. The limits of the histogram are set with the input `xlim`.
+The maximum rainfall that could be observed in Madrid is estimated as 88.08. Furthermore, since in the posterior sample there are some values of $\xi$ which are positive, we have a non-zero probability that the distribution is right-unbounded. The limits of the histogram are set with the input `xlim`.
 

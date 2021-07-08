@@ -3,21 +3,45 @@
 \name{return_level}
 \alias{return_level}
 \alias{return_level.evmm}
-\title{Return Levels Method}
+\title{Return Levels}
 \usage{
 return_level(x, ...)
 
 \method{return_level}{evmm}(x, values = NULL, cred = 0.95, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{values}{vector of points where to estimate the predictive distribution}
+\item{values}{numeric vector of values of which to compute the value at risk.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
+}
+\value{
+A list with the following entries: \itemize{
+\item \code{quantiles}: a matrix containing the estimated return levels, the posterior credibility intervals and the empirical estimate.
+\item \code{data}: the dataset used to estimate the return levels.
+\item \code{complete}: a matrix with the return levels for each value in the posterior sample.
+}
 }
 \description{
-Compute and plot return levels
+Computation of the return levels  for an extreme value mixture model
+}
+\details{
+A return level at \eqn{T} units of time is defined as the \eqn{1-1/T} quantile.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+return_level(model1)
+}
+
+}
+\references{
+do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
+}
+\seealso{
+\code{\link{ES}}, \code{\link{quant}}, \code{\link{VaR}}
 }

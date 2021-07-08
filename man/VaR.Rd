@@ -3,21 +3,44 @@
 \name{VaR}
 \alias{VaR}
 \alias{VaR.evmm}
-\title{VaR Method}
+\title{Value-at-Risk}
 \usage{
 VaR(x, ...)
 
 \method{VaR}{evmm}(x, values = NULL, cred = 0.95, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{values}{vector of points where to estimate the predictive distribution}
+\item{values}{numeric vector of values of which to compute the value at risk.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
+}
+\value{
+A list with the following entries: \itemize{
+\item \code{quantiles}: a matrix containing the estimated value at risk, the posterior credibility intervals and the empirical estimate.
+\item \code{data}: the dataset used to estimate the value at risk.
+\item \code{complete}: a matrix with the value at risk for each value in the posterior sample.
+}
 }
 \description{
-Compute and plot VaRs
+Computation of the Value-at-Risk for an extreme value mixture model.
+}
+\details{
+The Value-at-Risk for level q\% is defined as the 1-q/100 quantile of the model.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+VaR(model1)
+}
+}
+\references{
+Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.
+}
+\seealso{
+\code{\link{ES}}, \code{\link{quant}}, \code{\link{return_level}}
 }

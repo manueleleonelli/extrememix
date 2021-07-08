@@ -2,24 +2,38 @@
 % Please edit documentation in R/DIC.R
 \name{DIC}
 \alias{DIC}
-\alias{DIC.ggpd}
-\alias{DIC.mgpd}
-\title{DIC model selection criterion}
+\alias{DIC.evmm}
+\title{Deviance Information Criterion}
 \usage{
 DIC(x, ...)
 
-\method{DIC}{ggpd}(x, ...)
-
-\method{DIC}{mgpd}(x, ...)
+\method{DIC}{evmm}(x, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 }
 \value{
 The DIC of a model estimated with \code{extrememix}
 }
 \description{
 Computation of the DIC for an extreme value mixture model
+}
+\details{
+Let \eqn{y} denote a dataset and \eqn{p(y|\theta)} the likelihood of a parametric model with parameter \eqn{\theta}. The deviance is defined as \eqn{D(\theta)= -2\log p(y|\theta)}. The deviance information criterion (DIC) is defined as \deqn{DIC = D(\hat\theta) + 2p_D,} where \eqn{\hat\theta} is the posterior estimate of \eqn{\theta} and \eqn{p_D} is referred to as the effective number of parameters and defined as \deqn{E_{\theta|y}(D(\theta)) - D(\hat\theta).} Models with a smaller DIC are favored.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+DIC(model1)
+}
+
+}
+\references{
+Spiegelhalter, David J., et al. "Bayesian measures of model complexity and fit." Journal of the Royal Statistical Society: Series B 64.4 (2002): 583-639.
+}
+\seealso{
+\code{\link{WAIC}}
 }

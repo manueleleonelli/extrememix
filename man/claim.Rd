@@ -3,24 +3,19 @@
 \docType{data}
 \name{claim}
 \alias{claim}
-\title{Math Marks Data}
+\title{Automobile Claims Data}
 \format{
-A dataframe with 88 observations on the following 5 variables
-\itemize{
-   \item \bold{mechanics}: mark out of 100 for mechanics
-   \item \bold{vectors}: mark out of 100 for vectors
-   \item \bold{algebra}: mark out of 100 for algebra
-   \item \bold{analysis}: mark out of 100 for analysis
-   \item \bold{statistics}: mark out of 100 for statistics
-}
+A numeric vector of 4624 insurance claims
 }
 \source{
-Mardia, K. V., Kent, J. T. and Bibby, J. M. (1979) Multivariate Analysis. London: Academic Press.
+Charpentier, A. (Ed.). (2014). Computational actuarial science with R. CRC press.
+
+Goegebeur, Yuri, Armelle Guillou, and Jing Qin. "Extreme value estimation of the conditional risk premium in reinsurance." Insurance: Mathematics and Economics 96 (2021): 68-80.
 }
 \usage{
 data(claim)
 }
 \description{
-Marks out of 100 for 88 students taking examinations in mechanics (C), vectors (C), algebra (0), analysis (O) and statistics (O), where C indicates closed and O indicates open book examination.
+Claim amounts of one-year vehicle insurance policies taken out in 2004 or 2005 in Australia
 }
 \keyword{datasets}

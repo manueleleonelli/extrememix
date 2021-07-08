@@ -1,11 +1,16 @@
-#' VaR Method
+#' Convergence Assessment of MCMC Algorithms
 #'
-#' Compute and plot VaRs
+#' Plot of the traceplot and autocorrelation function for the 0.99 quantile from the posterior sample.
 #'
-#' @param x the output of a model estimated with \code{extremix}
-#' @param ... for compatibility
+#' @param x the output of a model estimated with \code{extrememix}.
+#' @param ... additional arguments for compatibility.
 #' @name check_convergence
 #' @export
+#' @examples \dontrun{
+#' data(rainfall)
+#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+#' check_convergence(model1)
+#' }
 check_convergence <- function (x, ...) {
   UseMethod("check_convergence", x)
 }

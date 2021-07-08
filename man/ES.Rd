@@ -2,25 +2,46 @@
 % Please edit documentation in R/ES.R
 \name{ES}
 \alias{ES}
-\alias{ES.ggpd}
-\alias{ES.mgpd}
-\title{Expected Shortfall Method}
+\alias{ES.evmm}
+\title{Expected Shortfall}
 \usage{
 ES(x, ...)
 
-\method{ES}{ggpd}(x, values = NULL, cred = 0.95, ...)
-
-\method{ES}{mgpd}(x, values = NULL, cred = 0.95, ...)
+\method{ES}{evmm}(x, values = NULL, cred = 0.95, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{values}{vector of points where to estimate the predictive distribution}
+\item{values}{numeric vector of values of which to compute the expected shortfall.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
+}
+\value{
+A list with the following entries: \itemize{
+\item \code{quantiles}: a matrix containing the estimated shortfall, the posterior credibility intervals and the empirical estimate.
+\item \code{data}: the dataset used to estimate the expected shortfall.
+\item \code{complete}: a matrix with the expected shortfall for each value in the posterior sample.
+}
 }
 \description{
-Compute and plot Expected Shortfalls
+Computation of the expected shortfall for an extreme value mixture model
+}
+\details{
+The expected shortfall is the expectation of a random variable conditional of being larger of a specific Value-at-Risk (quantile). For an extreme value mixture model this is equal to: \deqn{ES_p = \frac{VaR_p}{1-\xi} +\frac{\sigma-\xi u }{1-\xi}}
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+ES(model1)
+}
+
+}
+\references{
+Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.
+}
+\seealso{
+\code{\link{quant}}, \code{\link{return_level}}, \code{\link{VaR}}
 }

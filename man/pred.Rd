@@ -2,22 +2,12 @@
 % Please edit documentation in R/pred.R
 \name{pred}
 \alias{pred}
-\alias{pred.ggpd}
-\alias{pred.mgpd}
+\alias{pred.evmm}
 \title{Predictive Distribution}
 \usage{
 pred(x, ...)
 
-\method{pred}{ggpd}(
-  x,
-  x_axis = seq(min(x$data), max(x$data), length.out = 1000),
-  cred = 0.95,
-  xlim = c(min(x$data), max(x$data)),
-  ylim = NULL,
-  ...
-)
-
-\method{pred}{mgpd}(
+\method{pred}{evmm}(
   x,
   x_axis = seq(min(x$data), max(x$data), length.out = 1000),
   cred = 0.95,
@@ -27,18 +17,36 @@ pred(x, ...)
 )
 }
 \arguments{
-\item{x}{ciao}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{x_axis}{vector of points where to estimate the predictive distribution}
+\item{x_axis}{vector of points where to estimate the predictive distribution.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
 
-\item{xlim}{ciao}
+\item{xlim}{limits of the x-axis.}
 
-\item{ylim}{ciao}
+\item{ylim}{limits of the y-axis.}
+}
+\value{
+A plot of the estimate of the predictive distribution together with the data histogram.
 }
 \description{
-Plot of the predictive distribution of an extreme value mixture model
+Plot of the predictive distribution of an extreme value mixture model.
+}
+\details{
+Consider an extreme value mixture model \eqn{f(y|\theta)} and suppose a sample \eqn{(\theta^{(1)},\dots,\theta^{(S)})} from the posterior distribution is available. The predictive distribution at the point \eqn{y} is estimated as
+\deqn{\frac{1}{S}\sum_{s=1}^Sf(y|\theta^{(s)})}
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+pred(model1)
+}
+
+}
+\references{
+do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
 }

@@ -2,24 +2,42 @@
 % Please edit documentation in R/WAIC.R
 \name{WAIC}
 \alias{WAIC}
-\alias{WAIC.ggpd}
-\alias{WAIC.mgpd}
-\title{DIC model selection criterion}
+\alias{WAIC.evmm}
+\title{Widely Applicable Information Criteria}
 \usage{
 WAIC(x, ...)
 
-\method{WAIC}{ggpd}(x, ...)
-
-\method{WAIC}{mgpd}(x, ...)
+\method{WAIC}{evmm}(x, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 }
 \value{
 The WAIC of a model estimated with \code{extrememix}
 }
 \description{
-Computation of the WAIC for an extreme value mixture model
+Computation of the WAIC for an extreme value mixture model.
+}
+\details{
+Consider a dataset \eqn{y=(y_1,\dots,y_n)}, \eqn{p(y|\theta)} the likelihood of a parametric model with parameter \eqn{\theta}, and \eqn{(\theta^{(1)},\dots,\theta^{(S)})} a sample from the posterior distribution \eqn{p(\theta|y)}. 
+Define \deqn{\textnormal{llpd} = \sum_{i=1}^n \log\left(\sum_{i=1}^Sp(y_i|\theta^{(s)}\right)} and \deqn{p_\textnormal{WAIC} = \sum_{i=1}^n Var_{\theta|y}(\log p(y_i|\theta)).}
+Then the Widely Applicable Information Criteria is defined as \deqn{WAIC = -2\textnormal{llpd} + 2p_\textnormal{WAIC}.} Models with a smaller WAIC are favored.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+WAIC(model1)
+}
+
+}
+\references{
+Gelman, Andrew, Jessica Hwang, and Aki Vehtari. "Understanding predictive information criteria for Bayesian models." Statistics and computing 24.6 (2014): 997-1016.
+
+Watanabe, Sumio. "A widely applicable Bayesian information criterion." Journal of Machine Learning Research 14.Mar (2013): 867-897.
+}
+\seealso{
+\code{\link{DIC}}
 }

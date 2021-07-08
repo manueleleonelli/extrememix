@@ -3,19 +3,40 @@
 \name{upper_bound}
 \alias{upper_bound}
 \alias{upper_bound.evmm}
-\title{Upper Bound Method}
+\title{Upper Bound}
 \usage{
 upper_bound(x, ...)
 
 \method{upper_bound}{evmm}(x, cred = 0.95, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
+}
+\value{
+\code{upper_bound} returns a list with entries: \itemize{
+\item \code{bound}: a sample from the posterior distribution of the upper limit of the model, taken over the posterior values of xi which are negative.
+\item \code{prob}: the posterior probability that the distribution is unbounded.
+\item \code{cred}: the requested amplitude of the posterior credibility intervals.
+}
 }
 \description{
-Compute and plot return levels
+Computation of the upper bound of the distribution
+}
+\details{
+For an extreme value mixture model with a shape parameter \eqn{xi < 0} the distribution is right-bounded with upper limit equal to \eqn{u-\sigma/\xi}.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+upper_bound(model1)
+}
+
+}
+\references{
+Coles, Stuart, et al. An introduction to statistical modeling of extreme values. Vol. 208. London: Springer, 2001.
 }

@@ -98,23 +98,23 @@ tail) with 2 mixture components. It can be fitted using the function
 case we fully specify the model and the estimation procedure by also
 giving the starting values, the variances and the prior distribution.
 
-The starting values can be set creating a list with entries `startxi`,
-`startsigma`, `startu`, `startmu`, `starteta` and `startw`. The proposal
-variances can be set creating a list with entries `Vxi`, `Vsigma`, `Vu`,
-`Vmu` and `Vw` (for each mixture component the parameters *μ* and *η*
-are sampled jointly). The prior distribution can be set creating a list
-with entries `prior_u` (a vector with the mean and standard deviation of
-the prior normal distribution for *u*), `mu_mu` (a vector with the prior
-means of the Gamma distributions for *μ*), `mu_eta` (a vector with the
-prior shapes of the Gamma distributions for *μ*), `eta_mu` (a vector
-with the prior means of the Gamma distributions for *η*) and `eta_eta`
-(a vector with the prior shapes of the Gamma distributions for *η*).
+The starting values can be set creating a list with entries `xi`,
+`sigma`, `u`, `mu`, `eta` and `w`. The proposal variances can be set
+creating a list with entries `xi`, `sigma`, `u`, `mu` and `w` (for each
+mixture component the parameters *μ* and *η* are sampled jointly). The
+prior distribution can be set creating a list with entries `u` (a vector
+with the mean and standard deviation of the prior normal distribution
+for *u*), `mu_mu` (a vector with the prior means of the Gamma
+distributions for *μ*), `mu_eta` (a vector with the prior shapes of the
+Gamma distributions for *μ*), `eta_mu` (a vector with the prior means of
+the Gamma distributions for *η*) and `eta_eta` (a vector with the prior
+shapes of the Gamma distributions for *η*).
 
 ``` r
-start <- list(startxi = 0.2, startsigma = 5, startu = quantile(rainfall,0.9), 
-              startmu = c(4,10), starteta = c(1,4), startw = c(0.5,0.5))
-var <- list(Vxi = 0.001, Vsigma = 1, Vu = 2, Vmu = c(0.1,0.1), Vw = 0.1)
-prior <- list(prior_u = c(22,5), mu_mu = c(4,16), mu_eta = c(0.001,0.001),
+start <- list(xi = 0.2, sigma = 5, u = quantile(rainfall,0.9), 
+              mu = c(4,10), eta = c(1,4), w = c(0.5,0.5))
+var <- list(xi = 0.001, sigma = 1, u = 2, mu = c(0.1,0.1), w = 0.1)
+prior <- list(u = c(22,5), mu_mu = c(4,16), mu_eta = c(0.001,0.001),
               eta_mu = c(1,4), eta_eta = c(0.001,0.001))
 model2 <- fmgpd(rainfall, k =2, it = 50000, burn = 10000, thin = 40,
                 start = start, var = var, prior = prior)
@@ -125,7 +125,7 @@ since the estimate of the weight of one of the two components is zero.
 
 ``` r
 model2
-#> EVMM with 2 Mixtures of Gamma bulk. LogLik -1442.988 
+#> EVMM with 2 Mixtures of Gamma bulk. LogLik -1441.701 
 #> xi estimated as  -0.1404013 
 #> Probability of unbounded distribution  0.05794206
 summary(model2)
@@ -158,15 +158,14 @@ WAIC criteria in the equally-named functions.
 ``` r
 rbind(c(BIC(model1),BIC(model2)),c(DIC(model1),DIC(model2)),c(WAIC(model1),WAIC(model2)))
 #>          [,1]     [,2]
-#> [1,] 2915.970 2934.182
+#> [1,] 2913.251 2931.609
 #> [2,] 2894.482 2894.821
 #> [3,] 2896.428 2896.858
 ```
 
-For simplicity, here we considered three model selection criteria. DIC
-favors the MGPD, whilst BIC and WAIC favor the GGPD. As already noticed
-in the literature, the use of WAIC is recommended and indeed it selects
-the GGPD model.
+For simplicity, here we considered three model selection criteria. BIC,
+DIC and WAIC all favor the GGPD. As already noticed in the literature,
+the use of WAIC is recommended and indeed it selects the GGPD model.
 
 We therefore next investigate the use of the GGPD model to assess
 rainfall in the city of Madrid. The `plot` method gives an overview of
@@ -248,8 +247,8 @@ done with the function `upper_bound`.
 ``` r
 upper_bound(model1)
 #> Probability of unbounded distribution:  0.06393606 
-#> Estimated upper bound at  88.08  with probability  0.9360639 
-#>  Credibility interval at  0.95 %: ( 67.73 , 524.07 )
+#> Estimated upper bound at  78.19  with probability  0.9360639 
+#>  Credibility interval at  0.95 %: ( 54.81 , 516.62 )
 plot(upper_bound(model1), xlim = c(20,400))
 #> Upper Bound, with probability  0.9360639
 ```
@@ -257,7 +256,7 @@ plot(upper_bound(model1), xlim = c(20,400))
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" style="display: block; margin: auto;" />
 
 The maximum rainfall that could be observed in Madrid is estimated as
-84.77. Furthermore, since in the posterior sample there are some values
+88.08. Furthermore, since in the posterior sample there are some values
 of *ξ* which are positive, we have a non-zero probability that the
 distribution is right-unbounded. The limits of the histogram are set
 with the input `xlim`.

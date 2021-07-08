@@ -9,13 +9,19 @@
 \arguments{
 \item{x}{an object of class \code{upper_bound}.}
 
-\item{xlim}{ciao}
+\item{xlim}{limits of the x-axis.}
 
-\item{...}{additional parameters (compatibility).}
+\item{...}{additional parameters for compatibility.}
 }
 \description{
-Plot Upper Bounds
+Plotting method for the posterior distribution of the upper bound. No plot is reported if the posterior sample of xi has only positive values (unbounded distribution).
 }
-\details{
-Info
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+plot(upper_bound(model1))
+}
+
+
 }

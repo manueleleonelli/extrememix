@@ -2,12 +2,21 @@
 #'
 #' Density, distribution function, quantile function and random generation for the MGPD distribution.
 #'
-#'@return A co-variation matrix of the same size of the covariance matrix of \code{CI}.
 #'
-#'@examples dmgpd(3,0.5,2,5,c(2,3),c(1,2),c(0.3,0.7))
+#' The MGPD distribution is an extreme value mixture model with density
+#' \deqn{f_{MGPD}(x|\xi,\sigma,u,\mu,\eta,w)=\left\{\begin{array}{ll} f_{MG}(x|\mu,\eta,w), & x\leq u \\ (1-F_{MG}(u|\mu,\eta,w))f_{GPD}(x|\xi,\sigma,u), &\mbox{otherwise},  \end{array}\right.} where \eqn{f_{MG}} is the density of the mixture of Gammas, \eqn{F_{MG}} is the distribution function of the mixture of Gammas and \eqn{f_{GPD}} is the density of the Generalized Pareto Distribution, i.e.
+#'  \deqn{f_{GPD}(x|\xi,\sigma,u)=\left\{\begin{array}{ll} 1- (1+\frac{\xi}{\sigma}(x-u))^{-1/\xi}, & \mbox{if } \xi\neq 0,\\ 1- \exp\left(-\frac{x-u}{\sigma}\right), & \mbox{if } \xi = 0, \end{array}\right.}
+#' where \eqn{\xi} is a shape parameter, \eqn{\sigma > 0} is a scale parameter and \eqn{u>0} is a threshold.
+#' 
+#'@references do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
 #'
-#'@param x vector of quantiles.
-#'@param q vector of quantiles.
+#'@seealso \code{\link{fmgpd}}
+#'
+#'@return \code{dmgpd} gives the density, \code{pmgpd} gives the distribution function, \code{qmgpd} gives the quantile function, and \code{rmgpd} generates random deviates. The length of the result is determined by \code{N} for \code{rmgpd} and by the length of \code{x}, \code{q} or \code{p} otherwise.
+#'
+#'@examples dmgpd(3, xi = 0.5, sigma = 2,5, u = 5, mu = c(2,3), eta = c(1,2), w = c(0.3,0.7))
+#'
+#'@param x,q vector of quantiles.
 #'@param p vector of probabilities.
 #'@param N number of observations.
 #'@param xi shape parameter of the tail GPD (scalar).

@@ -1,16 +1,21 @@
-#' The MGPD distribution
+#' The Gamma Mixture Distribution
 #'
-#' Density, distribution function, quantile function and random generation for the MGPD distribution.
+#' Density, distribution function, quantile function and random generation for the mixture of Gamma distribution.
 #'
-#'@return A co-variation matrix of the same size of the covariance matrix of \code{CI}.
+#' The Gamma distribution has density \deqn{f_{GA}(x|\mu,\eta)= \frac{(\eta/\mu)^\eta}{\Gamma(\eta)}x^{\eta-1}\exp(-(\eta/\mu)x), \hspace{1cm} x>0,} where \eqn{\mu>0} is the mean of the distribution and \eqn{\xi>0} is its shape. 
+#'  The density of a mixture of Gamma distributions with \eqn{k} components is defined as  \deqn{f_{MG}(x|\mu,\eta,w)=\sum_{i=1}^k w_if_{GA}(x|\mu_i,\eta_i),} where \eqn{w_i,\mu_i,\eta_i >0}, for \eqn{i=1,\dots,k}, \eqn{w_1+\cdots+w_k=1}, \eqn{\mu=(\mu_1,\dots,\mu_k)}, \eqn{\eta = (\eta_1,\dots,\eta_k)} and \eqn{w=(w_1,\dots,w_k)}.
 #'
-#'@examples dmgpd(3,0.5,2,5,c(2,3),c(1,2),c(0.3,0.7))
+#'@return \code{dmgamma} gives the density, \code{pmgamma} gives the distribution function, \code{qmgamma} gives the quantile function, and \code{rmgamma} generates random deviates. 
 #'
-#'@param x vector of quantiles.
-#'@param q vector of quantiles.
+#'The length of the result is determined by \code{N} for \code{rmgamma} and by the length of \code{x}, \code{q} or \code{p} otherwise.
+#'
+#'@references Wiper, Michael, David Rios Insua, and Fabrizio Ruggeri. "Mixtures of gamma distributions with applications." Journal of Computational and Graphical Statistics 10.3 (2001): 440-454.
+#'
+#'@examples dmgamma(3, mu = c(2,3), eta = c(1,2), w = c(0.3,0.7))
+#'
+#'@param x,q vector of quantiles.
 #'@param p vector of probabilities.
 #'@param N number of observations.
-
 #'@param mu means of the gamma mixture components (vector).
 #'@param eta shapes of the gamma mixture components (vector).
 #'@param w weights of the gamma mixture components (vector). Must sum to one.

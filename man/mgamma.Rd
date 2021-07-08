@@ -6,7 +6,7 @@
 \alias{pmgamma}
 \alias{qmgamma}
 \alias{rmgamma}
-\title{The MGPD distribution}
+\title{The Gamma Mixture Distribution}
 \usage{
 dmgamma(x, mu, eta, w, log = FALSE)
 
@@ -17,7 +17,7 @@ qmgamma(p, mu, eta, w, lower.tail = TRUE)
 rmgamma(N, mu, eta, w)
 }
 \arguments{
-\item{x}{vector of quantiles.}
+\item{x, q}{vector of quantiles.}
 
 \item{mu}{means of the gamma mixture components (vector).}
 
@@ -27,8 +27,6 @@ rmgamma(N, mu, eta, w)
 
 \item{log}{logical; if TRUE, probabilities p are given as log(p).}
 
-\item{q}{vector of quantiles.}
-
 \item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P(X\leq x)} otherwise \eqn{P(X>x)}.}
 
 \item{p}{vector of probabilities.}
@@ -36,12 +34,21 @@ rmgamma(N, mu, eta, w)
 \item{N}{number of observations.}
 }
 \value{
-A co-variation matrix of the same size of the covariance matrix of \code{CI}.
+\code{dmgamma} gives the density, \code{pmgamma} gives the distribution function, \code{qmgamma} gives the quantile function, and \code{rmgamma} generates random deviates. 
+
+The length of the result is determined by \code{N} for \code{rmgamma} and by the length of \code{x}, \code{q} or \code{p} otherwise.
 }
 \description{
-Density, distribution function, quantile function and random generation for the MGPD distribution.
+Density, distribution function, quantile function and random generation for the mixture of Gamma distribution.
+}
+\details{
+The Gamma distribution has density \deqn{f_{GA}(x|\mu,\eta)= \frac{(\eta/\mu)^\eta}{\Gamma(\eta)}x^{\eta-1}\exp(-(\eta/\mu)x), \hspace{1cm} x>0,} where \eqn{\mu>0} is the mean of the distribution and \eqn{\xi>0} is its shape. 
+ The density of a mixture of Gamma distributions with \eqn{k} components is defined as  \deqn{f_{MG}(x|\mu,\eta,w)=\sum_{i=1}^k w_if_{GA}(x|\mu_i,\eta_i),} where \eqn{w_i,\mu_i,\eta_i >0}, for \eqn{i=1,\dots,k}, \eqn{w_1+\cdots+w_k=1}, \eqn{\mu=(\mu_1,\dots,\mu_k)}, \eqn{\eta = (\eta_1,\dots,\eta_k)} and \eqn{w=(w_1,\dots,w_k)}.
 }
 \examples{
-dmgpd(3,0.5,2,5,c(2,3),c(1,2),c(0.3,0.7))
+dmgamma(3, mu = c(2,3), eta = c(1,2), w = c(0.3,0.7))
 
+}
+\references{
+Wiper, Michael, David Rios Insua, and Fabrizio Ruggeri. "Mixtures of gamma distributions with applications." Journal of Computational and Graphical Statistics 10.3 (2001): 440-454.
 }

@@ -3,17 +3,24 @@
 \name{check_convergence}
 \alias{check_convergence}
 \alias{check_convergence.evmm}
-\title{VaR Method}
+\title{Convergence Assessment of MCMC Algorithms}
 \usage{
 check_convergence(x, ...)
 
 \method{check_convergence}{evmm}(x, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 }
 \description{
-Compute and plot VaRs
+Plot of the traceplot and autocorrelation function for the 0.99 quantile from the posterior sample.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+check_convergence(model1)
+}
 }

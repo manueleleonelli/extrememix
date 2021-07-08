@@ -2,25 +2,50 @@
 % Please edit documentation in R/quantiles.R
 \name{quant}
 \alias{quant}
-\alias{quant.ggpd}
-\alias{quant.mgpd}
-\title{Quantiles Method}
+\alias{quant.evmm}
+\title{Estimated Quantiles}
 \usage{
 quant(x, ...)
 
-\method{quant}{ggpd}(x, values = NULL, cred = 0.95, ...)
-
-\method{quant}{mgpd}(x, values = NULL, cred = 0.95, ...)
+\method{quant}{evmm}(x, values = NULL, cred = 0.95, ...)
 }
 \arguments{
-\item{x}{the output of a model estimated with \code{extremix}}
+\item{x}{the output of a model estimated with \code{extrememix}.}
 
-\item{...}{for compatibility}
+\item{...}{additional arguments for compatibility.}
 
-\item{values}{vector of points where to estimate the predictive distribution}
+\item{values}{numeric vector of values of which to compute the quantile.}
 
-\item{cred}{amplitude of the posterior credibility interval}
+\item{cred}{amplitude of the posterior credibility interval.}
+}
+\value{
+A list with the following entries: \itemize{
+\item \code{quantiles}: a matrix containing the quantiles, the posterior credibility intervals and the empirical estimate.
+\item \code{data}: the dataset used to estimate the quantiles.
+\item \code{complete}: a matrix with the quantiles for each value in the posterior sample.
+}
 }
 \description{
-Compute and plot quantiles
+Computation of posterior quantiles for an extreme value mixture model
+}
+\details{
+For a random variable \eqn{X} the p-quantile is the value \eqn{x} such that \eqn{P(X>x)=1-p}. For an extreme value mixture model this can be computed as 
+\deqn{x = u +\frac{\sigma}{\xi}((1-p^*)^{-\xi}-1),}
+where \deqn{p^* = \frac{p-F_\textnormal{bulk}(u|\theta)}{1-F_\textnormal{bulk}(u|\theta)},}
+and \eqn{F_\textnormal{bulk}} is the distribution function of the bulk, parametrized by \eqn{\theta}.
+}
+\examples{
+\dontrun{
+data(rainfall)
+model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+quant(model1)
+}
+
+    
+}
+\references{
+do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
+}
+\seealso{
+\code{\link{ES}}, \code{\link{return_level}}, \code{\link{VaR}}
 }
