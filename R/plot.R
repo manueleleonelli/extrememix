@@ -136,10 +136,10 @@ plot.upper_bound <- function(x, xlim = c(min(x$bound),max(x$bound)),...) {
 
 plot.evmm <- function(x, ...) {
   X1 <- ..density.. <- X2 <- IQR <- NULL
-  p1 <- ggplot(data.frame(x$chain), aes(x = X1)) + geom_histogram(aes(y=..density..), binwidth = 2*nrow(x$chain)^(-1/3)*IQR(x$chain[,1]), colour="black", fill="white") + labs(x = "xi") + theme_bw() +geom_vline(xintercept=median(x$chain[,1]), linetype="dashed", 
-                                                                                                                                                                                                                  color = "red")
-  p2 <- ggplot(data.frame(x$chain), aes(x = X2)) + geom_histogram(aes(y=..density..), binwidth = 2*length(x$chain)^(-1/3)*IQR(x$chain[,2]), colour="black", fill="white") + labs(x = "sigma") + theme_bw() +geom_vline(xintercept=median(x$chain[,2]), linetype="dashed", 
-                                                                                                                                                                                                                       color = "red")
+  data <- data.frame(x$chain)
+  colnames(data[,1:2]) <- c("X1","X2")
+  p1 <- ggplot(data, aes(x = X1)) + geom_histogram(aes(y=..density..), binwidth = 2*nrow(x$chain)^(-1/3)*IQR(x$chain[,1]), colour="black", fill="white") + labs(x = "xi") + theme_bw() +geom_vline(xintercept=median(x$chain[,1]), linetype="dashed", color = "red")
+  p2 <- ggplot(data, aes(x = X2)) + geom_histogram(aes(y=..density..), binwidth = 2*length(x$chain)^(-1/3)*IQR(x$chain[,2]), colour="black", fill="white") + labs(x = "sigma") + theme_bw() +geom_vline(xintercept=median(x$chain[,2]), linetype="dashed",  color = "red")
   p3 <- plot(quant(x),...)
   p4 <- pred(x,...)
   grid.arrange(p1,p2,p3,p4,ncol = 2, nrow =2)
