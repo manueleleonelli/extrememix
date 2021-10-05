@@ -54,7 +54,6 @@ pggpd <- function(q,xi,sigma,u,mu,eta,lower.tail = TRUE){
   if(mu<=0)stop("mu must be positive")
   if(eta<=0)stop("eta must be positive")
   if(u <= 0) stop("u must be positive")
-  if(q< 0 || q>1){stop("q must be between zero and one")}
   if(lower.tail == TRUE){c_pggpd(q,xi,sigma,u,mu,eta)}
   else{1-c_pggpd(q,xi,sigma,u,mu,eta)}
 }

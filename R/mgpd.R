@@ -62,7 +62,6 @@ pmgpd <- function(q,xi,sigma,u,mu,eta,w, lower.tail = TRUE){
   if(sum(w)- 1 > 0.00000001)stop("w must sum to one")
   if(length(mu) != length(eta) || length(mu) != length(w) || length(eta) != length(w))stop("mu, eta and w must have the same length")
   if(u <= 0) stop("u must be positive")
-  if(q< 0 || q>1){stop("q must be between zero and one")}
   if(lower.tail == TRUE){c_pmgpd(q,xi,sigma,u,mu,eta,w)}
   else{1-c_pmgpd(q,xi,sigma,u,mu,eta,w)}
 }
