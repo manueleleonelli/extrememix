@@ -8,10 +8,10 @@ Maintainer: Manuele Leonelli <manuele.leonelli@ie.edu>
 Description: Fits extreme value mixture models, which are models for tails not requiring selection of a threshold, for continuous data. It includes functions for model comparison, estimation of quantity of interest in extreme value analysis and plotting. 
 License: GPL (>= 2)
 Imports: 
-   evd, ggplot2, gridExtra, mixtools, Rcpp, threshr
-LinkingTo: Rcpp
+   evd, ggplot2, gridExtra, mixtools, Rcpp, threshr, RcppProgress
+LinkingTo: Rcpp, RcppProgress
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
     knitr

@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // c_dgpd
 double c_dgpd(double x, double xi, double sigma, double u);
 RcppExport SEXP _extrememix_c_dgpd(SEXP xSEXP, SEXP xiSEXP, SEXP sigmaSEXP, SEXP uSEXP) {

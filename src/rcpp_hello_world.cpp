@@ -1,4 +1,7 @@
+// [[Rcpp::depends(RcppProgress)]]
 #include <Rcpp.h>
+#include <progress.hpp>
+#include <progress_bar.hpp>
 using namespace Rcpp;
 
 
@@ -265,7 +268,14 @@ List c_fmgpd(NumericVector x, int it, int k, NumericVector start_gpd, NumericVec
 
   double xip; double sigmap; double up; NumericVector wp; NumericVector mup; NumericVector etap;
   
+  Progress p(it);
+    
   for(int i = 1; i <= it; i++){
+      
+  if (Progress::check_abort() )
+  stop("User Interrupted") ;
+  p.increment(); 
+      
     xic[i] = xic[i-1]; sigmac[i] = sigmac[i-1]; uc[i]= uc[i-1]; muc(i,_) = muc(i-1,_); etac(i,_) = etac(i-1,_); wc(i,_) = wc(i-1,_);
     V(i,_) = V(i-1,_);
     
@@ -402,7 +412,14 @@ List c_fggpd(NumericVector x, int it, NumericVector start, NumericVector var, Nu
   V(0,_) = var;
   NumericVector cur = start;
   
+  Progress p(it);
+  
   for(int i = 1; i <= it; i++){
+    
+    if (Progress::check_abort() )
+      stop("User Interrupted") ;
+    p.increment(); 
+    
     out(i,_) = out(i-1,_);
     cur = out(i,_);
     V(i,_) = V(i-1,_);
