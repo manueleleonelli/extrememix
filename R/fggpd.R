@@ -103,6 +103,7 @@ ggpd.check.input <- function(it,var,start,prior, thin, burn){
 #' @param thin Thinning interval.
 #' @param burn Burn-in length.
 #' 
+#' @import RcppProgress
 #' @export
 fggpd <- function(x, it,start = NULL, var = NULL,  prior = NULL, thin = 1, burn = 0){
   if(is.null(start)) start <- ggpd.starting.values(x)

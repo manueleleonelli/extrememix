@@ -11,7 +11,7 @@ Imports:
    evd, ggplot2, gridExtra, mixtools, Rcpp, threshr, RcppProgress
 LinkingTo: Rcpp, RcppProgress
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2
 Suggests: 
     rmarkdown,
     knitr

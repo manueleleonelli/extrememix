@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# extrememix
+# extrememix <img src="https://github.com/manueleleonelli/extrememix/blob/master/hex-extrememix.png" align="right" height="150px" width="150px"/>
 
 `extrememix` implements Bayesian estimation of extreme value mixture models, estimating the threshold over which a Generalized Pareto distribution can be assumed as well as high quantiles and other measures of interest in extreme value theory.
 

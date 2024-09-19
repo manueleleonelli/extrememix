@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^doc$
 ^Meta$
+^README_cache$
+^README.Rmd$
