@@ -34,7 +34,7 @@ rmgamma(N, mu, eta, w)
 \item{N}{number of observations.}
 }
 \value{
-\code{dmgamma} gives the density, \code{pmgamma} gives the distribution function, \code{qmgamma} gives the quantile function, and \code{rmgamma} generates random deviates. 
+\code{dmgamma} gives the density, \code{pmgamma} gives the distribution function, \code{qmgamma} gives the quantile function, and \code{rmgamma} generates random deviates.
 
 The length of the result is determined by \code{N} for \code{rmgamma} and by the length of \code{x}, \code{q} or \code{p} otherwise.
 }
@@ -42,8 +42,8 @@ The length of the result is determined by \code{N} for \code{rmgamma} and by the
 Density, distribution function, quantile function and random generation for the mixture of Gamma distribution.
 }
 \details{
-The Gamma distribution has density \deqn{f_{GA}(x|\mu,\eta)= \frac{(\eta/\mu)^\eta}{\Gamma(\eta)}x^{\eta-1}\exp(-(\eta/\mu)x), \hspace{1cm} x>0,} where \eqn{\mu>0} is the mean of the distribution and \eqn{\xi>0} is its shape. 
- The density of a mixture of Gamma distributions with \eqn{k} components is defined as  \deqn{f_{MG}(x|\mu,\eta,w)=\sum_{i=1}^k w_if_{GA}(x|\mu_i,\eta_i),} where \eqn{w_i,\mu_i,\eta_i >0}, for \eqn{i=1,\dots,k}, \eqn{w_1+\cdots+w_k=1}, \eqn{\mu=(\mu_1,\dots,\mu_k)}, \eqn{\eta = (\eta_1,\dots,\eta_k)} and \eqn{w=(w_1,\dots,w_k)}.
+The Gamma distribution has density \deqn{f_{GA}(x|\mu,\eta)= \frac{(\eta/\mu)^\eta}{\Gamma(\eta)}x^{\eta-1}\exp(-(\eta/\mu)x), \hspace{1cm} x>0,} where \eqn{\mu>0} is the mean of the distribution and \eqn{\eta>0} is its shape.
+The density of a mixture of Gamma distributions with \eqn{k} components is defined as  \deqn{f_{MG}(x|\mu,\eta,w)=\sum_{i=1}^k w_if_{GA}(x|\mu_i,\eta_i),} where \eqn{w_i,\mu_i,\eta_i >0}, for \eqn{i=1,\dots,k}, \eqn{w_1+\cdots+w_k=1}, \eqn{\mu=(\mu_1,\dots,\mu_k)}, \eqn{\eta = (\eta_1,\dots,\eta_k)} and \eqn{w=(w_1,\dots,w_k)}.
 }
 \examples{
 dmgamma(3, mu = c(2,3), eta = c(1,2), w = c(0.3,0.7))

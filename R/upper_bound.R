@@ -1,9 +1,9 @@
-#' Upper Bound 
+#' Upper Bound
 #'
 #' Computation of the upper bound of the distribution
-#' 
-#' For an extreme value mixture model with a shape parameter \eqn{xi < 0} the distribution is right-bounded with upper limit equal to \eqn{u-\sigma/\xi}. 
-#' 
+#'
+#' For an extreme value mixture model with a shape parameter \eqn{xi < 0} the distribution is right-bounded with upper limit equal to \eqn{u-\sigma/\xi}.
+#'
 #' @return \code{upper_bound} returns a list with entries: \itemize{
 #' \item \code{bound}: a sample from the posterior distribution of the upper limit of the model, taken over the posterior values of xi which are negative.
 #' \item \code{prob}: the posterior probability that the distribution is unbounded.
@@ -15,14 +15,14 @@
 #' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
 #' upper_bound(model1)
 #' }
-#' 
+#'
 #' @references Coles, Stuart, et al. An introduction to statistical modeling of extreme values. Vol. 208. London: Springer, 2001.
-#' 
+#'
 #' @param x the output of a model estimated with \code{extrememix}.
 #' @param ... additional arguments for compatibility.
 #' @name upper_bound
 #' @export
- upper_bound <- function (x, ...) {
+upper_bound <- function (x, ...) {
   UseMethod("upper_bound", x)
 }
 

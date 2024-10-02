@@ -53,12 +53,12 @@ data(rainfall)
 model1 <- fmgpd(rainfall, k = 2, it = 25000, burn = 5000, thin = 25)
 start <- list(xi = 0.2, sigma = 2, u = 10, mu = c(2,5), eta = c(2,2) , w = c(0.4,0.6))
 var <- list(xi = 0.01, sigma = 1, u = 3, mu = c(3,3), w = 0.01)
-prior <- list(u = c(22,5), mu_mu = c(2,5), mu_eta = c(0.01,0.01), 
+prior <- list(u = c(22,5), mu_mu = c(2,5), mu_eta = c(0.01,0.01),
          eta_mu = c(3,3),eta_eta = c(0.01,0.01))
 
 model2 <- fmgpd(rainfall, k= 2, it = 25000, start = start, var =var, prior = prior)
 }
- 
+
 }
 \references{
 Behrens, Cibele N., Hedibert F. Lopes, and Dani Gamerman. "Bayesian analysis of extreme events with threshold estimation." Statistical Modelling 4.3 (2004): 227-244.

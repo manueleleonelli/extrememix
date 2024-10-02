@@ -6,18 +6,18 @@
 #'
 #' @param x the output of a model estimated with \code{extrememix}
 #' @param ... additional arguments for compatibility.
-#' 
+#'
 #' @seealso  \code{\link{ES}}, \code{\link{quant}}, \code{\link{return_level}}
-#' 
+#'
 #' @references Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.
-#' 
+#'
 #'
 #' @return A list with the following entries: \itemize{
 #' \item \code{quantiles}: a matrix containing the estimated value at risk, the posterior credibility intervals and the empirical estimate.
 #' \item \code{data}: the dataset used to estimate the value at risk.
 #' \item \code{complete}: a matrix with the value at risk for each value in the posterior sample.
 #' }
-#' 
+#'
 #' @examples \dontrun{
 #' data(rainfall)
 #' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)

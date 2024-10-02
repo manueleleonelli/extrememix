@@ -1,6 +1,6 @@
 #' Monthly Maxima Daily Rainfall in Madrid
 #'
-#' Monthly maxima of the daily rainfall (measured in mms) recorded at the Retiro station in the city centre of Madrid, Spain, between 1985 and 2020. 
+#' Monthly maxima of the daily rainfall (measured in mms) recorded at the Retiro station in the city centre of Madrid, Spain, between 1985 and 2020.
 #'
 #' @docType data
 #'

@@ -21,7 +21,7 @@ The WAIC of a model estimated with \code{extrememix}
 Computation of the WAIC for an extreme value mixture model.
 }
 \details{
-Consider a dataset \eqn{y=(y_1,\dots,y_n)}, \eqn{p(y|\theta)} the likelihood of a parametric model with parameter \eqn{\theta}, and \eqn{(\theta^{(1)},\dots,\theta^{(S)})} a sample from the posterior distribution \eqn{p(\theta|y)}. 
+Consider a dataset \eqn{y=(y_1,\dots,y_n)}, \eqn{p(y|\theta)} the likelihood of a parametric model with parameter \eqn{\theta}, and \eqn{(\theta^{(1)},\dots,\theta^{(S)})} a sample from the posterior distribution \eqn{p(\theta|y)}.
 Define \deqn{\textnormal{llpd} = \sum_{i=1}^n \log\left(\sum_{i=1}^Sp(y_i|\theta^{(s)}\right)} and \deqn{p_\textnormal{WAIC} = \sum_{i=1}^n Var_{\theta|y}(\log p(y_i|\theta)).}
 Then the Widely Applicable Information Criteria is defined as \deqn{WAIC = -2\textnormal{llpd} + 2p_\textnormal{WAIC}.} Models with a smaller WAIC are favored.
 }

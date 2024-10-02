@@ -1,19 +1,24 @@
 Package: extrememix
-Type: Package
 Title: Bayesian Estimation of Extreme Value Mixture Models
-Version: 1.0
-Date: 2021-06-21
-Author: Manuele Leonelli
-Maintainer: Manuele Leonelli <manuele.leonelli@ie.edu>
-Description: Fits extreme value mixture models, which are models for tails not requiring selection of a threshold, for continuous data. It includes functions for model comparison, estimation of quantity of interest in extreme value analysis and plotting. 
-License: GPL (>= 2)
-Imports: 
-   evd, ggplot2, gridExtra, mixtools, Rcpp, threshr, RcppProgress
-LinkingTo: Rcpp, RcppProgress
+Version: 0.0.1
+Authors@R: 
+    person("Manuele", "Leonelli", , "manuele.leonelli@ie.edu", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0002-2562-5192"))
+Description: Fits extreme value mixture models, which are models for tails not requiring selection of a threshold, for continuous data. It includes functions for model comparison, estimation of quantity of interest in extreme value analysis and plotting. Reference: 'CN Behrens, HF Lopes, D Gamerman' (2004) <doi:10.1191/1471082X04st075oa>. 'FF do Nascimento, D. Gamerman, HF Lopes' <doi:10.1007/s11222-011-9270-z>.
+License: MIT + file LICENSE
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Suggests: 
-    rmarkdown,
-    knitr
-VignetteBuilder: knitr
 URL: https://github.com/manueleleonelli/extrememix
+BugReports: https://github.com/manueleleonelli/extrememix/issues
+LinkingTo: 
+    Rcpp, RcppProgress 
+Imports: 
+    evd, ggplot2, gridExtra, mixtools, Rcpp, RcppProgress, stats, threshr
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

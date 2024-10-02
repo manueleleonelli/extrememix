@@ -29,7 +29,7 @@ A list with the following entries: \itemize{
 Computation of posterior quantiles for an extreme value mixture model
 }
 \details{
-For a random variable \eqn{X} the p-quantile is the value \eqn{x} such that \eqn{P(X>x)=1-p}. For an extreme value mixture model this can be computed as 
+For a random variable \eqn{X} the p-quantile is the value \eqn{x} such that \eqn{P(X>x)=1-p}. For an extreme value mixture model this can be computed as
 \deqn{x = u +\frac{\sigma}{\xi}((1-p^*)^{-\xi}-1),}
 where \deqn{p^* = \frac{p-F_\textnormal{bulk}(u|\theta)}{1-F_\textnormal{bulk}(u|\theta)},}
 and \eqn{F_\textnormal{bulk}} is the distribution function of the bulk, parametrized by \eqn{\theta}.
@@ -41,11 +41,8 @@ model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
 quant(model1)
 }
 
-    
+
 }
 \references{
 do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
-}
-\seealso{
-\code{\link{ES}}, \code{\link{return_level}}, \code{\link{VaR}}
 }

@@ -6,19 +6,19 @@
 #' \deqn{\frac{1}{S}\sum_{s=1}^Sf(y|\theta^{(s)})}
 #'
 #' @references do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
-#' 
+#'
 #' @param x the output of a model estimated with \code{extrememix}.
 #' @param ... additional arguments for compatibility.
 #' @name pred
-#' 
+#'
 #' @return A plot of the estimate of the predictive distribution together with the data histogram.
-#' 
+#'
 #' @examples \dontrun{
 #' data(rainfall)
 #' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
 #' pred(model1)
 #' }
-#' 
+#'
 #' @export
 pred <- function (x, ...) {
   UseMethod("pred", x)
@@ -29,6 +29,7 @@ pred <- function (x, ...) {
 #' @method pred evmm
 #' @importFrom ggplot2 ggplot geom_line geom_ribbon theme_bw
 #' @import ggplot2
+#' @importFrom stats density
 #'@export
 #' @rdname pred
 #'
@@ -44,13 +45,13 @@ pred.evmm <- function(x, x_axis = seq(min(x$data), max(x$data), length.out = 100
     k <- (ncol(x$chain) - 3) / 3
     out <- c_pred_mgpd(x_axis, x$chain[,1], x$chain[,2], x$chain[,3], x$chain[,4:(4+k-1)], x$chain[, (4+k):(4+2*k-1)], x$chain[,(4+2*k):ncol(x$chain)])
   }
-  
+
   mean <- apply(out, 2, median)
   lower <- apply(out, 2, function(x) sort(x)[round(((1 - cred) / 2) * nrow(out))])
   upper <- apply(out, 2, function(x) sort(x)[round((cred + (1 - cred) / 2) * nrow(out))])
-  
+
   data <- data.frame(x_axis, mean, lower, upper)
-  
+
   base_plot <- ggplot(data, aes(x = x_axis, y = mean)) +
     geom_histogram(data = data.frame(x = x$data), aes(x, y = after_stat(density)),
                    binwidth = 2 * length(x$data)^(-1/3) * (sort(x$data)[round(0.75 * length(x$data))] - sort(x$data)[round(0.25 * length(x$data))]),
@@ -65,10 +66,10 @@ pred.evmm <- function(x, x_axis = seq(min(x$data), max(x$data), length.out = 100
       axis.title = element_text(size = 14, face = "bold"),  # Make axis titles larger and bold
       plot.title = element_text(hjust = 0.5, size = 16, face = "bold")  # Center and enhance title
     ) +
-    xlab("x") + 
+    xlab("x") +
     ylab("Predictive Distribution") +
     coord_cartesian(xlim = xlim, ylim = ylim, expand = FALSE)  # Allow zooming without distorting the axis
-  
+
   if(is.null(ylim)) {
     return(base_plot)
   } else {

@@ -1,15 +1,15 @@
-#' Expected Shortfall 
+#' Expected Shortfall
 #'
 #' Computation of the expected shortfall for an extreme value mixture model
-#' 
+#'
 #' The expected shortfall is the expectation of a random variable conditional of being larger of a specific Value-at-Risk (quantile). For an extreme value mixture model this is equal to: \deqn{ES_p = \frac{VaR_p}{1-\xi} +\frac{\sigma-\xi u }{1-\xi}}
 #'
 #'
 #' @param x the output of a model estimated with \code{extrememix}.
 #' @param ... additional arguments for compatibility.
-#' 
+#'
 #' @seealso  \code{\link{quant}}, \code{\link{return_level}}, \code{\link{VaR}}
-#' 
+#'
 #' @references Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.
 #'
 #' @return A list with the following entries: \itemize{
@@ -17,13 +17,13 @@
 #' \item \code{data}: the dataset used to estimate the expected shortfall.
 #' \item \code{complete}: a matrix with the expected shortfall for each value in the posterior sample.
 #' }
-#' 
+#'
 #' @examples \dontrun{
 #' data(rainfall)
 #' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
 #' ES(model1)
 #' }
-#' 
+#'
 #' @name ES
 #' @export
 ES <- function (x, ...) {

@@ -7,10 +7,9 @@
 #' \deqn{f_{MGPD}(x|\xi,\sigma,u,\mu,\eta,w)=\left\{\begin{array}{ll} f_{MG}(x|\mu,\eta,w), & x\leq u \\ (1-F_{MG}(u|\mu,\eta,w))f_{GPD}(x|\xi,\sigma,u), &\mbox{otherwise},  \end{array}\right.} where \eqn{f_{MG}} is the density of the mixture of Gammas, \eqn{F_{MG}} is the distribution function of the mixture of Gammas and \eqn{f_{GPD}} is the density of the Generalized Pareto Distribution, i.e.
 #'  \deqn{f_{GPD}(x|\xi,\sigma,u)=\left\{\begin{array}{ll} 1- (1+\frac{\xi}{\sigma}(x-u))^{-1/\xi}, & \mbox{if } \xi\neq 0,\\ 1- \exp\left(-\frac{x-u}{\sigma}\right), & \mbox{if } \xi = 0, \end{array}\right.}
 #' where \eqn{\xi} is a shape parameter, \eqn{\sigma > 0} is a scale parameter and \eqn{u>0} is a threshold.
-#' 
+#'
 #'@references do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
 #'
-#'@seealso \code{\link{fmgpd}}
 #'
 #'@return \code{dmgpd} gives the density, \code{pmgpd} gives the distribution function, \code{qmgpd} gives the quantile function, and \code{rmgpd} generates random deviates. The length of the result is determined by \code{N} for \code{rmgpd} and by the length of \code{x}, \code{q} or \code{p} otherwise.
 #'

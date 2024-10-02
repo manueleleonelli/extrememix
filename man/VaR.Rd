@@ -29,7 +29,7 @@ A list with the following entries: \itemize{
 Computation of the Value-at-Risk for an extreme value mixture model.
 }
 \details{
-The Value-at-Risk for level q\% is defined as the 1-q/100 quantile of the model.
+The Value-at-Risk for level q\\% is defined as the 1-q/100 quantile of the model.
 }
 \examples{
 \dontrun{

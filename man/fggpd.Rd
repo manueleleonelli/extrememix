@@ -63,5 +63,5 @@ Behrens, Cibele N., Hedibert F. Lopes, and Dani Gamerman. "Bayesian analysis of 
 do Nascimento, Fernando Ferraz, Dani Gamerman, and Hedibert Freitas Lopes. "A semiparametric Bayesian approach to extreme value estimation." Statistics and Computing 22.2 (2012): 661-675.
 }
 \seealso{
-\code{\link{fmgpd}}, \code{\link{ggpd}}
+\code{\link{ggpd}}
 }

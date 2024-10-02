@@ -14,11 +14,11 @@
 #' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
 #' DIC(model1)
 #' }
-#' 
+#'
 #' @seealso \code{\link{WAIC}}
-#' 
+#'
 #'@export
-#'  
+#'
 DIC <- function (x, ...) {
   UseMethod("DIC", x)
 }
@@ -30,12 +30,12 @@ DIC <- function (x, ...) {
 #' @rdname DIC
 #'
 DIC.evmm <- function(x,...){
- if(sum(class(x) == "ggpd") == 1) return(DIC_ggpd(x$chain,x$data))
- if(sum(class(x) == "mgpd") == 1) {  k <- (ncol(x$chain)-3)/3
- gpd <- x$chain[,1:3]
- mu <- x$chain[,4:(4+k-1)]
- eta <- x$chain[,(4+k):(4+2*k-1)]
- w <- x$chain[,(4+2*k):ncol(x$chain)]
- return(DIC_mgpd(gpd,mu,eta,w,x$data))
-   }
+  if(sum(class(x) == "ggpd") == 1) return(DIC_ggpd(x$chain,x$data))
+  if(sum(class(x) == "mgpd") == 1) {  k <- (ncol(x$chain)-3)/3
+  gpd <- x$chain[,1:3]
+  mu <- x$chain[,4:(4+k-1)]
+  eta <- x$chain[,(4+k):(4+2*k-1)]
+  w <- x$chain[,(4+2*k):ncol(x$chain)]
+  return(DIC_mgpd(gpd,mu,eta,w,x$data))
+  }
 }

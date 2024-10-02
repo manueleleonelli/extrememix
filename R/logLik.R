@@ -1,16 +1,16 @@
 #' Log-likelihood Method
-#' 
+#'
 #' Computation of the log-likelihood of an extreme value mixture model (thus also \code{AIC} and \code{BIC} are available).
 #'
 #' @param object an object of class \code{evmm}.
 #' @param ... additional parameters for compatibility.
-#' 
+#'
 #' @importFrom stats logLik
-#' 
+#'
 #' @method logLik evmm
 #'
 #' @export
-#' 
+#'
 #' @rdname logLik
 #'
 logLik.evmm <- function(object,...){

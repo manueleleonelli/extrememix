@@ -2,138 +2,138 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 c_dgpd <- function(x, xi, sigma, u) {
-    .Call('_extrememix_c_dgpd', PACKAGE = 'extrememix', x, xi, sigma, u)
+    .Call(`_extrememix_c_dgpd`, x, xi, sigma, u)
 }
 
 c_pgpd <- function(q, xi, sigma, u) {
-    .Call('_extrememix_c_pgpd', PACKAGE = 'extrememix', q, xi, sigma, u)
+    .Call(`_extrememix_c_pgpd`, q, xi, sigma, u)
 }
 
 c_qgpd <- function(p, xi, sigma, u) {
-    .Call('_extrememix_c_qgpd', PACKAGE = 'extrememix', p, xi, sigma, u)
+    .Call(`_extrememix_c_qgpd`, p, xi, sigma, u)
 }
 
 c_rgpd <- function(xi, sigma, u) {
-    .Call('_extrememix_c_rgpd', PACKAGE = 'extrememix', xi, sigma, u)
+    .Call(`_extrememix_c_rgpd`, xi, sigma, u)
 }
 
 c_dgamma <- function(x, mu, eta) {
-    .Call('_extrememix_c_dgamma', PACKAGE = 'extrememix', x, mu, eta)
+    .Call(`_extrememix_c_dgamma`, x, mu, eta)
 }
 
 c_pgamma <- function(q, mu, eta) {
-    .Call('_extrememix_c_pgamma', PACKAGE = 'extrememix', q, mu, eta)
+    .Call(`_extrememix_c_pgamma`, q, mu, eta)
 }
 
 c_qgamma <- function(p, mu, eta) {
-    .Call('_extrememix_c_qgamma', PACKAGE = 'extrememix', p, mu, eta)
+    .Call(`_extrememix_c_qgamma`, p, mu, eta)
 }
 
 c_rgamma <- function(mu, eta) {
-    .Call('_extrememix_c_rgamma', PACKAGE = 'extrememix', mu, eta)
+    .Call(`_extrememix_c_rgamma`, mu, eta)
 }
 
 c_dmgamma <- function(x, mu, eta, w) {
-    .Call('_extrememix_c_dmgamma', PACKAGE = 'extrememix', x, mu, eta, w)
+    .Call(`_extrememix_c_dmgamma`, x, mu, eta, w)
 }
 
 c_pmgamma <- function(q, mu, eta, w) {
-    .Call('_extrememix_c_pmgamma', PACKAGE = 'extrememix', q, mu, eta, w)
+    .Call(`_extrememix_c_pmgamma`, q, mu, eta, w)
 }
 
 c_qmgamma <- function(p, mu, eta, w) {
-    .Call('_extrememix_c_qmgamma', PACKAGE = 'extrememix', p, mu, eta, w)
+    .Call(`_extrememix_c_qmgamma`, p, mu, eta, w)
 }
 
 c_rmgamma <- function(mu, eta, w) {
-    .Call('_extrememix_c_rmgamma', PACKAGE = 'extrememix', mu, eta, w)
+    .Call(`_extrememix_c_rmgamma`, mu, eta, w)
 }
 
 c_dggpd <- function(x, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_dggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+    .Call(`_extrememix_c_dggpd`, x, xi, sigma, u, mu, eta)
 }
 
 c_pggpd <- function(x, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_pggpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta)
+    .Call(`_extrememix_c_pggpd`, x, xi, sigma, u, mu, eta)
 }
 
 c_rggpd <- function(N, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_rggpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta)
+    .Call(`_extrememix_c_rggpd`, N, xi, sigma, u, mu, eta)
 }
 
 c_qggpd <- function(p, xi, sigma, u, mu, eta) {
-    .Call('_extrememix_c_qggpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta)
+    .Call(`_extrememix_c_qggpd`, p, xi, sigma, u, mu, eta)
 }
 
 c_dmgpd <- function(x, xi, sigma, u, mu, eta, w) {
-    .Call('_extrememix_c_dmgpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta, w)
+    .Call(`_extrememix_c_dmgpd`, x, xi, sigma, u, mu, eta, w)
 }
 
 c_pmgpd <- function(q, xi, sigma, u, mu, eta, w) {
-    .Call('_extrememix_c_pmgpd', PACKAGE = 'extrememix', q, xi, sigma, u, mu, eta, w)
+    .Call(`_extrememix_c_pmgpd`, q, xi, sigma, u, mu, eta, w)
 }
 
 c_qmgpd <- function(p, xi, sigma, u, mu, eta, w) {
-    .Call('_extrememix_c_qmgpd', PACKAGE = 'extrememix', p, xi, sigma, u, mu, eta, w)
+    .Call(`_extrememix_c_qmgpd`, p, xi, sigma, u, mu, eta, w)
 }
 
 c_rmgpd <- function(N, xi, sigma, u, mu, eta, w) {
-    .Call('_extrememix_c_rmgpd', PACKAGE = 'extrememix', N, xi, sigma, u, mu, eta, w)
-}
-
-c_fmgpd <- function(x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta) {
-    .Call('_extrememix_c_fmgpd', PACKAGE = 'extrememix', x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta)
+    .Call(`_extrememix_c_rmgpd`, N, xi, sigma, u, mu, eta, w)
 }
 
 c_fggpd <- function(x, it, start, var, prior) {
-    .Call('_extrememix_c_fggpd', PACKAGE = 'extrememix', x, it, start, var, prior)
+    .Call(`_extrememix_c_fggpd`, x, it, start, var, prior)
 }
 
-DIC_ggpd <- function(chain, data) {
-    .Call('_extrememix_DIC_ggpd', PACKAGE = 'extrememix', chain, data)
-}
-
-DIC_mgpd <- function(gpd, mu, eta, w, data) {
-    .Call('_extrememix_DIC_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, data)
-}
-
-WAIC_ggpd <- function(chain, data) {
-    .Call('_extrememix_WAIC_ggpd', PACKAGE = 'extrememix', chain, data)
-}
-
-WAIC_mgpd <- function(gpd, mu, eta, w, data) {
-    .Call('_extrememix_WAIC_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, data)
-}
-
-c_pred_ggpd <- function(x, chain) {
-    .Call('_extrememix_c_pred_ggpd', PACKAGE = 'extrememix', x, chain)
+c_fmgpd <- function(x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta) {
+    .Call(`_extrememix_c_fmgpd`, x, it, k, start_gpd, start_mu, start_eta, start_w, var, prior_u, prior_mu, prior_eta)
 }
 
 c_quant_ggpd <- function(chain, x) {
-    .Call('_extrememix_c_quant_ggpd', PACKAGE = 'extrememix', chain, x)
-}
-
-c_es_ggpd <- function(chain, x) {
-    .Call('_extrememix_c_es_ggpd', PACKAGE = 'extrememix', chain, x)
-}
-
-c_tvar_ggpd <- function(chain, x) {
-    .Call('_extrememix_c_tvar_ggpd', PACKAGE = 'extrememix', chain, x)
-}
-
-c_pred_mgpd <- function(x, xi, sigma, u, mu, eta, w) {
-    .Call('_extrememix_c_pred_mgpd', PACKAGE = 'extrememix', x, xi, sigma, u, mu, eta, w)
+    .Call(`_extrememix_c_quant_ggpd`, chain, x)
 }
 
 c_quant_mgpd <- function(gpd, mu, eta, w, x) {
-    .Call('_extrememix_c_quant_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+    .Call(`_extrememix_c_quant_mgpd`, gpd, mu, eta, w, x)
+}
+
+DIC_ggpd <- function(chain, data) {
+    .Call(`_extrememix_DIC_ggpd`, chain, data)
+}
+
+DIC_mgpd <- function(gpd, mu, eta, w, data) {
+    .Call(`_extrememix_DIC_mgpd`, gpd, mu, eta, w, data)
+}
+
+WAIC_ggpd <- function(chain, data) {
+    .Call(`_extrememix_WAIC_ggpd`, chain, data)
+}
+
+WAIC_mgpd <- function(gpd, mu, eta, w, data) {
+    .Call(`_extrememix_WAIC_mgpd`, gpd, mu, eta, w, data)
+}
+
+c_pred_ggpd <- function(x, chain) {
+    .Call(`_extrememix_c_pred_ggpd`, x, chain)
+}
+
+c_es_ggpd <- function(chain, x) {
+    .Call(`_extrememix_c_es_ggpd`, chain, x)
+}
+
+c_tvar_ggpd <- function(chain, x) {
+    .Call(`_extrememix_c_tvar_ggpd`, chain, x)
+}
+
+c_pred_mgpd <- function(x, xi, sigma, u, mu, eta, w) {
+    .Call(`_extrememix_c_pred_mgpd`, x, xi, sigma, u, mu, eta, w)
 }
 
 c_es_mgpd <- function(gpd, mu, eta, w, x) {
-    .Call('_extrememix_c_es_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+    .Call(`_extrememix_c_es_mgpd`, gpd, mu, eta, w, x)
 }
 
 c_tvar_mgpd <- function(gpd, mu, eta, w, x) {
-    .Call('_extrememix_c_tvar_mgpd', PACKAGE = 'extrememix', gpd, mu, eta, w, x)
+    .Call(`_extrememix_c_tvar_mgpd`, gpd, mu, eta, w, x)
 }
 
