@@ -1,5 +1,5 @@
 ---
-title: "overview"
+title: "extrememix R package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{overview}
@@ -13,8 +13,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
-# extrememix 
 
 `extrememix` implements Bayesian estimation of extreme value mixture models, estimating the threshold over which a Generalized Pareto distribution can be assumed as well as high quantiles and other measures of interest in extreme value theory.
 

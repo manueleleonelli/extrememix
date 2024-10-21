@@ -32,11 +32,7 @@ Computation of the return levels  for an extreme value mixture model
 A return level at \eqn{T} units of time is defined as the \eqn{1-1/T} quantile.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-return_level(model1)
-}
+return_level(rainfall_ggpd)
 
 }
 \references{

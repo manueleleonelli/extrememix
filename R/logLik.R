@@ -7,6 +7,9 @@
 #'
 #' @importFrom stats logLik
 #'
+#' @return The log-likelihood of a model estimated with \code{extrememix}
+#'
+#' @examples logLik(rainfall_ggpd)
 #' @method logLik evmm
 #'
 #' @export

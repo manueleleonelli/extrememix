@@ -30,11 +30,7 @@ Computation of the upper bound of the distribution
 For an extreme value mixture model with a shape parameter \eqn{xi < 0} the distribution is right-bounded with upper limit equal to \eqn{u-\sigma/\xi}.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-upper_bound(model1)
-}
+upper_bound(rainfall_ggpd)
 
 }
 \references{

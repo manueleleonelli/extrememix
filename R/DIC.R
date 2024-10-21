@@ -9,11 +9,7 @@
 #' @name DIC
 #' @return The DIC of a model estimated with \code{extrememix}
 #' @references Spiegelhalter, David J., et al. "Bayesian measures of model complexity and fit." Journal of the Royal Statistical Society: Series B 64.4 (2002): 583-639.
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' DIC(model1)
-#' }
+#' @examples DIC(rainfall_ggpd)
 #'
 #' @seealso \code{\link{WAIC}}
 #'

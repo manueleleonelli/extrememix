@@ -11,6 +11,9 @@
 
 \item{...}{additional parameters for compatibility.}
 }
+\value{
+Plots of a model estimated with \code{extrememix}.
+}
 \description{
 Plotting method for objects of class \code{evmm} giving an overview of an estimated model.
 }
@@ -23,10 +26,6 @@ The \code{plot} method for objects of class \code{evmm} reports four plots: \ite
 }
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-plot(model1)
-}
+plot(rainfall_ggpd)
 
 }

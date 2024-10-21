@@ -40,11 +40,7 @@ Consider an extreme value mixture model \eqn{f(y|\theta)} and suppose a sample \
 \deqn{\frac{1}{S}\sum_{s=1}^Sf(y|\theta^{(s)})}
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-pred(model1)
-}
+pred(rainfall_ggpd)
 
 }
 \references{

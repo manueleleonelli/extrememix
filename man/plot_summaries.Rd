@@ -23,6 +23,9 @@
 
 \item{...}{additional parameters  for compatibility.}
 }
+\value{
+Appropriate plots for quantities computed with \code{extrememix}.
+}
 \description{
 Plotting methods for objects created with \code{quant}, \code{ES}, \code{return_level} or \code{VaR}.
 }
@@ -30,11 +33,8 @@ Plotting methods for objects created with \code{quant}, \code{ES}, \code{return_
 Two types of plot can be output: either a line plot in the case the functions \code{quant}, \code{ES}, \code{return_level} or \code{VaR} where called with more than one value for the input \code{values}, or an histogram otherwise.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-plot(return_level(model1)) ## for line plot
-plot(return_level(model1, values = 100)) ## for histogram
-}
+plot(return_level(rainfall_ggpd)) ## for line plot
+plot(return_level(rainfall_ggpd, values = 100)) ## for histogram
+
 
 }

@@ -11,6 +11,9 @@
 
 \item{...}{additional parameters (compatibility).}
 }
+\value{
+A printed summary of a model estimated with \code{extrememix} or any quantity associated with it.
+}
 \description{
 Posterior estimates and credibility intervals for the parameters of extreme value mixture models.
 }

@@ -32,11 +32,7 @@ Computation of the Value-at-Risk for an extreme value mixture model.
 The Value-at-Risk for level q\\% is defined as the 1-q/100 quantile of the model.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-VaR(model1)
-}
+VaR(rainfall_ggpd)
 }
 \references{
 Lattanzi, Chiara, and Manuele Leonelli. "A changepoint approach for the identification of financial extreme regimes." Brazilian Journal of Probability and Statistics.

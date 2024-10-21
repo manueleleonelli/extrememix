@@ -35,11 +35,7 @@ where \deqn{p^* = \frac{p-F_\textnormal{bulk}(u|\theta)}{1-F_\textnormal{bulk}(u
 and \eqn{F_\textnormal{bulk}} is the distribution function of the bulk, parametrized by \eqn{\theta}.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-quant(model1)
-}
+quant(rainfall_ggpd)
 
 
 }

@@ -18,11 +18,7 @@
 #' \item \code{complete}: a matrix with the value at risk for each value in the posterior sample.
 #' }
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' VaR(model1)
-#' }
+#' @examples VaR(rainfall_ggpd)
 
 #' @name VaR
 #' @export

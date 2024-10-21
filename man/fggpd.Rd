@@ -46,14 +46,15 @@ The user can also select any of the three inputs above. \itemize{
 \item The prior \code{prior} must be a list with entries \code{u}, \code{mu}, \code{eta} all containing a vector of length two (for \code{u} giving the mean and the standard deviation of the Normal prior, for \code{mu} and \code{eta} giving the mean and shape of the Gamma prior).}
 }
 \examples{
-\dontrun{
+\donttest{
+## Small number of iterations and burn-in for quick execution
 data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
+model1 <- fggpd(rainfall, it = 250, burn = 50, thin = 25)
 
 start <- list(xi = 0.2, sigma = 2, u = 10, mu = 5, eta = 2)
 var <- list(xi = 0.01, sigma = 1, u = 3, mu = 3, eta = 1)
 prior <- list(u = c(22,5), mu = c(4,16), eta = c(0.001,0.001))
-model2 <- fggpd(rainfall,it = 25000, start = start, var =var, prior = prior)
+model2 <- fggpd(rainfall,it = 250, start = start, var =var, prior = prior)
 }
 
 }

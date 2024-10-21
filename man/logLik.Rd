@@ -11,6 +11,12 @@
 
 \item{...}{additional parameters for compatibility.}
 }
+\value{
+The log-likelihood of a model estimated with \code{extrememix}
+}
 \description{
 Computation of the log-likelihood of an extreme value mixture model (thus also \code{AIC} and \code{BIC} are available).
+}
+\examples{
+logLik(rainfall_ggpd)
 }

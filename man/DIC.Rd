@@ -24,11 +24,7 @@ Computation of the DIC for an extreme value mixture model
 Let \eqn{y} denote a dataset and \eqn{p(y|\theta)} the likelihood of a parametric model with parameter \eqn{\theta}. The deviance is defined as \eqn{D(\theta)= -2\log p(y|\theta)}. The deviance information criterion (DIC) is defined as \deqn{DIC = D(\hat\theta) + 2p_D,} where \eqn{\hat\theta} is the posterior estimate of \eqn{\theta} and \eqn{p_D} is referred to as the effective number of parameters and defined as \deqn{E_{\theta|y}(D(\theta)) - D(\hat\theta).} Models with a smaller DIC are favored.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-DIC(model1)
-}
+DIC(rainfall_ggpd)
 
 }
 \references{

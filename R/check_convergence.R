@@ -6,11 +6,8 @@
 #' @param ... additional arguments for compatibility.
 #' @name check_convergence
 #' @export
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' check_convergence(model1)
-#' }
+#' @return Two plots to check if the estimation with \code{fggpd} and \code{mgpd} converged: traceplot and autocorrelation plot for the 99th quantile of the posterior density.
+#' @examples check_convergence(rainfall_ggpd)
 check_convergence <- function (x, ...) {
   UseMethod("check_convergence", x)
 }

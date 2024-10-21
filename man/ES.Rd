@@ -32,11 +32,7 @@ Computation of the expected shortfall for an extreme value mixture model
 The expected shortfall is the expectation of a random variable conditional of being larger of a specific Value-at-Risk (quantile). For an extreme value mixture model this is equal to: \deqn{ES_p = \frac{VaR_p}{1-\xi} +\frac{\sigma-\xi u }{1-\xi}}
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-ES(model1)
-}
+ES(rainfall_ggpd)
 
 }
 \references{

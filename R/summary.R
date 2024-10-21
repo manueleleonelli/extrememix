@@ -6,6 +6,7 @@
 #' @param x an object created by \code{extrememix}.
 #' @param ... additional arguments for compatibility.
 #' @name print
+#' @returns A printed output of a model estimated with \code{extrememix}.
 NULL
 
 
@@ -26,6 +27,7 @@ print.evmm <- function(x, ...) {
 #' @param object an object of class \code{evmm}.
 #' @param ... additional parameters (compatibility).
 #'
+#' @returns A printed summary of a model estimated with \code{extrememix} or any quantity associated with it.
 #' @export
 
 summary.evmm <- function(object,...){

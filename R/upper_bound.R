@@ -10,11 +10,7 @@
 #' \item \code{cred}: the requested amplitude of the posterior credibility intervals.
 #' }
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' upper_bound(model1)
-#' }
+#' @examples upper_bound(rainfall_ggpd)
 #'
 #' @references Coles, Stuart, et al. An introduction to statistical modeling of extreme values. Vol. 208. London: Springer, 2001.
 #'

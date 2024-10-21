@@ -30,6 +30,9 @@
 
 \item{...}{additional arguments for compatibility.}
 }
+\value{
+A printed output of a model estimated with \code{extrememix}.
+}
 \description{
 Collection of printing methods for various objects created by \code{extrememix}.
 }

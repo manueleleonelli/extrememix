@@ -20,11 +20,7 @@
 #' \item \code{complete}: a matrix with the quantiles for each value in the posterior sample.
 #' }
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' quant(model1)
-#' }
+#' @examples quant(rainfall_ggpd)
 #'
 #'
 #' @export

@@ -13,11 +13,7 @@
 #'
 #' @return A plot of the estimate of the predictive distribution together with the data histogram.
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' pred(model1)
-#' }
+#' @examples pred(rainfall_ggpd)
 #'
 #' @export
 pred <- function (x, ...) {

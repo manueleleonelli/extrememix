@@ -48,15 +48,16 @@ The user can also select any of the three inputs above. \itemize{
 \item The prior \code{prior} must be a list with entries \code{u}, \code{mu_mu}, \code{mu_eta}, \code{eta_mu} and \code{eta_eta}.  \code{u} gives the mean and the standard deviation of the Normal prior for \eqn{u}. The vectors of length \code{k}, \code{mu_mu} and \code{eta_mu} give the prior means of \eqn{\mu} and \eqn{\eta}, whilst \code{mu_eta} and \code{eta_eta} give their prior shapes.}
 }
 \examples{
-\dontrun{
+\donttest{
 data(rainfall)
-model1 <- fmgpd(rainfall, k = 2, it = 25000, burn = 5000, thin = 25)
+## Small number of iterations and burn-in for quick execution
+model1 <- fmgpd(rainfall, k = 2, it = 250, burn = 50, thin = 25)
 start <- list(xi = 0.2, sigma = 2, u = 10, mu = c(2,5), eta = c(2,2) , w = c(0.4,0.6))
 var <- list(xi = 0.01, sigma = 1, u = 3, mu = c(3,3), w = 0.01)
 prior <- list(u = c(22,5), mu_mu = c(2,5), mu_eta = c(0.01,0.01),
          eta_mu = c(3,3),eta_eta = c(0.01,0.01))
 
-model2 <- fmgpd(rainfall, k= 2, it = 25000, start = start, var =var, prior = prior)
+model2 <- fmgpd(rainfall, k= 2, it = 250, start = start, var =var, prior = prior)
 }
 
 }

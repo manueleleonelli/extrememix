@@ -8,16 +8,14 @@
 #' @param x an object of class \code{quant}, \code{ES}, \code{return_level} or \code{VaR}.
 #' @param ylim limits of the y-axis.
 #' @param ... additional parameters  for compatibility.
-#'
+#' @returns Appropriate plots for quantities computed with \code{extrememix}.
 #'
 #' @name plot_summaries
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' plot(return_level(model1)) ## for line plot
-#' plot(return_level(model1, values = 100)) ## for histogram
-#' }
+#' @examples
+#' plot(return_level(rainfall_ggpd)) ## for line plot
+#' plot(return_level(rainfall_ggpd, values = 100)) ## for histogram
+#'
 #'
 NULL
 
@@ -93,13 +91,9 @@ plot.ES <- function(x, ylim = NULL, ...) {
 #' @param xlim limits of the x-axis.
 #' @param ... additional parameters for compatibility.
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' plot(upper_bound(model1))
-#' }
+#' @examples plot(upper_bound(rainfall_ggpd))
 #'
-#'
+#'@returns A histogram for the posterior estimated upper bound of the distribution.
 #' @export
 
 plot.upper_bound <- function(x, xlim = c(min(x$bound),max(x$bound)),...) {
@@ -122,12 +116,9 @@ plot.upper_bound <- function(x, xlim = c(min(x$bound),max(x$bound)),...) {
 #' \item A plot of the predictive distribution together with the data histogram.
 #' }
 #'
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' plot(model1)
-#' }
+#' @examples plot(rainfall_ggpd)
 #'
+#' @returns Plots of a model estimated with \code{extrememix}.
 #' @import gridExtra
 #' @param x an object of class \code{evmm}.
 #' @param ... additional parameters for compatibility.

@@ -5,3 +5,6 @@
 ^README_cache$
 ^README.Rmd$
 ^hex-extrememix\.png$
+^LICENSE.md$
+^cran-comments.md$
+^CRAN-SUBMISSION$

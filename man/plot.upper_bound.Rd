@@ -13,15 +13,13 @@
 
 \item{...}{additional parameters for compatibility.}
 }
+\value{
+A histogram for the posterior estimated upper bound of the distribution.
+}
 \description{
 Plotting method for the posterior distribution of the upper bound. No plot is reported if the posterior sample of xi has only positive values (unbounded distribution).
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-plot(upper_bound(model1))
-}
-
+plot(upper_bound(rainfall_ggpd))
 
 }

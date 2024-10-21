@@ -26,11 +26,7 @@ Define \deqn{\textnormal{llpd} = \sum_{i=1}^n \log\left(\sum_{i=1}^Sp(y_i|\theta
 Then the Widely Applicable Information Criteria is defined as \deqn{WAIC = -2\textnormal{llpd} + 2p_\textnormal{WAIC}.} Models with a smaller WAIC are favored.
 }
 \examples{
-\dontrun{
-data(rainfall)
-model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-WAIC(model1)
-}
+WAIC(rainfall_ggpd)
 
 }
 \references{

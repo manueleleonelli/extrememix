@@ -11,11 +11,7 @@
 #' @name WAIC
 #' @seealso \code{\link{DIC}}
 #' @return The WAIC of a model estimated with \code{extrememix}
-#' @examples \dontrun{
-#' data(rainfall)
-#' model1 <- fggpd(rainfall, it = 25000, burn = 5000, thin = 25)
-#' WAIC(model1)
-#' }
+#' @examples WAIC(rainfall_ggpd)
 #'
 #' @references Gelman, Andrew, Jessica Hwang, and Aki Vehtari. "Understanding predictive information criteria for Bayesian models." Statistics and computing 24.6 (2014): 997-1016.
 #' @references Watanabe, Sumio. "A widely applicable Bayesian information criterion." Journal of Machine Learning Research 14.Mar (2013): 867-897.
